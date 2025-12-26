@@ -1,0 +1,28 @@
+.topBar {
+  width: 100%;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+
+  &__item {
+    padding: 20px;
+    cursor: pointer;
+    height: 100%;
+
+    &-text {
+      color: $Neutral700;
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+
+  &__item:hover {
+    border-bottom: 2px solid $Primary700;
+  }
+
+  &__item.active {
+    border-bottom: 2px solid $Primary700;
+  }
+}

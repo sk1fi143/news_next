@@ -1,0 +1,16 @@
+.tabs {
+    display: flex;
+    flex-direction: row;
+
+    &__item {
+        padding: 16px 20px;
+        cursor: pointer;
+
+        &-text {
+            color: $Neutral700;
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 500;
+        }
+    }
+}

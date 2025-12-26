@@ -19,7 +19,12 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@cmp/*": ["./shared/components/*"],
+      "@img/*": ["./public/images/*"],
+      "@icons/*": ["./public/icons/*"],
+      "@fonts/*": ["./public/fonts/*"],
+      "@styles/*": ["./shared/styles/*"],
     }
   },
   "include": [
