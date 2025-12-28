@@ -4,22 +4,25 @@ import React from 'react';
 import { SearchIcon } from '@cmp/svg/search';
 import { Close } from '@cmp/svg/close';
 
-export const Search: React.FC = () => {
-    const [isOpen, setIsOpen] = React.useState(false);
+interface SearchProps {
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+}
+
+export const Search: React.FC<SearchProps> = ({ isOpen, onOpen, onClose }) => {
     const inputRef = React.useRef<HTMLInputElement>(null);
 
-    React.useEffect(() => {
+  React.useEffect(() => {
     if (isOpen && inputRef.current) {
       inputRef.current.focus();
     }
   }, [isOpen]);
 
-  const handleOpen = () => setIsOpen(true);
-  const handleClose = () => setIsOpen(false);
-
   return (
-    <div className="search">
-      <div className={`search__container ${isOpen ? 'open' : ''}`} onClick={!isOpen ? handleOpen : undefined}>
+    <div className={`search ${isOpen ? 'search__full-width' : ''}`}>
+      <div className={`search__container ${isOpen ? 'open' : ''}`} 
+        onClick={!isOpen ? onOpen : undefined}>
         <div className="search__container-icon">
           <SearchIcon />
         </div>
@@ -35,7 +38,7 @@ export const Search: React.FC = () => {
       </div>
 
       {isOpen && (
-        <button className="search__close" onClick={handleClose}>
+        <button className="search__close" onClick={onClose}>
           <Close />
         </button>
       )}

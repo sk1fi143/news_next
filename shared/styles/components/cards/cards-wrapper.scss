@@ -1,0 +1,22 @@
+.cards-wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 18px;
+
+    &__title {
+        color: $Neutral700;
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+    &__cards {
+        display: flex;
+        gap: 16px;
+        width: min-content;
+        flex-wrap: wrap;
+
+        .newsCard-L {
+            grid-column: span 2;
+        }
+    }
+}

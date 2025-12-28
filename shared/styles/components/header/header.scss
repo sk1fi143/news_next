@@ -2,3 +2,23 @@
 @import './select';
 @import './search';
 @import './tabs';
+
+.header {
+    width: 100%;
+    box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.12);
+    background: $white;
+    display: flex;
+    flex-direction: column;
+
+    &__row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        column-gap: 16px;
+        padding: 16px 32px;
+
+        &-logo {
+            margin-left: auto;
+        }
+    }
+}

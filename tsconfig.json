@@ -21,6 +21,7 @@
     "paths": {
       "@/*": ["./*"],
       "@cmp/*": ["./shared/components/*"],
+      "@models/*": ["./shared/models/*"],
       "@img/*": ["./public/images/*"],
       "@icons/*": ["./public/icons/*"],
       "@fonts/*": ["./public/fonts/*"],

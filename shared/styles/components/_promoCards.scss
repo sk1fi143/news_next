@@ -1,0 +1,106 @@
+.promoCards {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  row-gap: 16px;
+  column-gap: 32px;
+}
+
+.promoCard {
+  border-radius: 16px;
+  cursor: pointer;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  align-items: start;
+
+  &-L {
+    grid-row: span 2;
+
+    .promoCard__button {
+      display: flex;
+    }
+
+    .promoCard__title {
+      font-size: 24px;
+      line-height: 28px;
+    }
+  }
+
+  &-primary {
+    background: $Primary200;
+
+    .promoCard__type {
+      background: $Primary300;
+    }
+  }
+
+  &-secondary {
+    background: $Secondary200;
+
+    .promoCard__type {
+      background: $Secondary300;
+    }
+  }
+
+  &-neutral {
+    background: $Neutral200;
+
+    .promoCard__type {
+      background: $white;
+    }
+  }
+
+  &__type {
+    padding: 8px;
+    border-radius: 40px;
+
+    &-text {
+      color: $Neutral700;
+      font-family: Inter;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 12px;
+    }
+  }
+
+  &__title {
+    font-weight: 500;
+    color: $Neutral700;
+    margin-top: 8px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  &__description {
+    color: $Neutral400;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  &__time {
+    color: $Neutral400;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 12px;
+    margin-top: 8px;
+  }
+
+  &__button {
+    display: none;
+    margin-top: auto;
+    padding: 8px 16px;
+    background: $Neutral500;
+    border-radius: 40px;
+    color: $white;
+    font-size: 14px;
+    line-height: 18px;
+    font-family: Inter;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+  }
+}

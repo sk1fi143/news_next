@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import { Pages } from './data';
+import { Pages } from '@models/tabs';
 
 export const Tabs: React.FC = () => {
   return (

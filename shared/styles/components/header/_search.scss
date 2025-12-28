@@ -4,6 +4,12 @@
   gap: 12px;
   justify-content: flex-start;
 
+  &__full-width {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
   &__container {
     display: flex;
     align-items: center;
@@ -13,7 +19,7 @@
     border-radius: 40px;
     padding: 8px;
     overflow: hidden;
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    // transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     box-sizing: border-box;
 
@@ -26,6 +32,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-left: 7px;
     }
 
     &-input {
