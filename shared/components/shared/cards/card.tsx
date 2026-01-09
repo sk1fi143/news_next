@@ -1,12 +1,12 @@
 import { CardProps } from '@/shared/interface/cards';
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 import CardImg from '@img/card.png';
+import { RegionLink } from '../region-link';
 
 export const Card: React.FC<CardProps> = ({ className, id, title, location, time, imageUrl }) => {
   return (
-    <Link href={`/news/${id}`} className={className}>
+    <RegionLink href={`/news/${id}`} className={className}>
         <Image quality={75} src={CardImg} alt={title} className="newsCard__img" />
         <div className="newsCard__description">
         <h6 className="newsCard__description-title">{title}</h6>
@@ -16,6 +16,6 @@ export const Card: React.FC<CardProps> = ({ className, id, title, location, time
           <span className="newsCard__description-txt">{location}</span>
         </div>
       </div>
-    </Link>
+    </RegionLink>
   );
 };

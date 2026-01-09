@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import { useForm, Controller } from "react-hook-form";
 import { PatternFormat } from "react-number-format";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { RegionLink } from "../region-link";
 
 const onlyLettersAndSome = /^[A-Za-zА-Яа-яЁё\s-]+$/;
 
@@ -256,13 +256,13 @@ export const Form: React.FC = () => {
             className="communication__form-terms-label"
           >
             Я ознакомился с условиями обработки{" "}
-            <Link
+            <RegionLink
               href="/pp"
               className="communication__form-terms-label-primary"
               onClick={(e) => e.stopPropagation()}
             >
               персональных данных
-            </Link>
+            </RegionLink>
           </label>
         </div>
 

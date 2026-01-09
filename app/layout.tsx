@@ -3,6 +3,7 @@ import '../shared/styles/app.scss';
 import { Header } from '@cmp/shared/header/header';
 import { Footer } from "@cmp/shared/footer/footer";
 import { Inter } from 'next/font/google';
+import { NewsData } from "@/shared/models/newsData";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,14 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru">
-      <head>
-        
-      </head>
+    <html lang="ru" suppressHydrationWarning>
       <body
         className={`${inter.className} antialiased`}
       >
-        <Header />
+        <Header data={NewsData}/>
         {children}
         <Footer />
       </body>

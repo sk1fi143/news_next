@@ -25,3 +25,7 @@ export const Regions = [
         logo: NO,
     }
 ]
+
+export type Region = typeof Regions[number];
+export type RegionCode = Region['url'];
+export const REGIONS_CODES = Regions.map((r) => r.url);

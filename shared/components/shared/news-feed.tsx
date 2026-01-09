@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import { Card } from "./cards/card";
-import Link from "next/link";
 import { CardProps } from "@/shared/interface/cards";
+import { RegionLink } from "./region-link";
 
 interface SidebarData {
   slug: string;
@@ -83,9 +83,9 @@ export const NewsFeed: React.FC<Props> = ({ title, link, data }) => {
                 ))
           )}
       </div>
-      <Link href={link} className="news-feed__button">
+      <RegionLink href={link} className="news-feed__button">
         Смотреть все
-      </Link>
+      </RegionLink>
     </div>
   );
 };

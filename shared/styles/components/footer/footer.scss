@@ -61,6 +61,19 @@
     align-items: center;
     column-gap: 4px;
     cursor: pointer;
+
+    &-link {
+        &:hover {
+            svg path {
+                fill: $Primary700;
+                transition: all 0.3s ease-in-out;
+            }
+            span {
+                color: $Primary700;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+    }
 }
 
 @media (max-width: 1199px) and (min-width: 768px) {

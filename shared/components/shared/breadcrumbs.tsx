@@ -1,8 +1,9 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { BreadcrumbsMap } from '@/shared/models/breadcrumbsMap';
+import { usePathname } from "next/navigation";
+import { BreadcrumbsMap } from "@/shared/models/breadcrumbsMap";
+import { RegionLink } from "./region-link";
+import { Regions } from "@/shared/models/regions";
 
 type BreadcrumbsProps = {
   slug?: string;
@@ -10,36 +11,41 @@ type BreadcrumbsProps = {
 
 export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ slug }) => {
   const pathname = usePathname();
-  const segments = pathname.split('/').filter(Boolean);
 
-  const pageKey = segments[0];
-  const pageTitle = BreadcrumbsMap[pageKey];
+  const segments = pathname.split("/").filter(Boolean);
+  const cleanSegments = Regions.some((r) => r.url === segments[0])
+    ? segments.slice(1)
+    : segments;
 
-  const isPageActive = segments.length === 1;
-  const isSlugActive = segments.length > 1;
+  const pageKey = cleanSegments[0];
+  const pageTitle = pageKey ? BreadcrumbsMap[pageKey] : null;
+
+  const isPageActive = cleanSegments.length === 1;
+  const isSlugActive = cleanSegments.length > 1;
 
   return (
     <nav className="breadcrumbs">
-
-      <Link href="/" className="breadcrumbs__text">Главная</Link>
+      <RegionLink href="/" className="breadcrumbs__text">
+        Главная
+      </RegionLink>
 
       {pageTitle && (
         <>
           <span className="breadcrumbs__text">/</span>
+
           {isPageActive ? (
-            <span className="breadcrumbs__text breadcrumbs__text-active">{pageTitle}</span>
-          ) : (
-            <Link
-              href={`/${pageKey}`}
-              className="breadcrumbs__text"
-            >
+            <span className="breadcrumbs__text breadcrumbs__text-active">
               {pageTitle}
-            </Link>
+            </span>
+          ) : (
+            <RegionLink href={`/${pageKey}`} className="breadcrumbs__text">
+              {pageTitle}
+            </RegionLink>
           )}
         </>
       )}
 
-      {isSlugActive && (
+      {isSlugActive && slug && (
         <>
           <span className="breadcrumbs__text">/</span>
           <span className="breadcrumbs__text breadcrumbs__text-active">

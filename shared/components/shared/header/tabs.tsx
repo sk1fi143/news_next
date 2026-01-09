@@ -1,26 +1,36 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import React from 'react';
-import { usePathname } from 'next/navigation';
-import { Pages } from '@/shared/models/tabs';
+import React from "react";
+import { usePathname } from "next/navigation";
+import { Pages } from "@/shared/models/tabs";
+import { RegionLink } from "../region-link";
+import { Regions } from "@/shared/models/regions";
 
 export const Tabs: React.FC = () => {
-  const pathname = usePathname(); // /news/123
+  const pathname = usePathname();
+  const segments = pathname.split("/").filter(Boolean);
+  const hasRegion = Regions.some((r) => r.url === segments[0]);
+  const cleanPath = "/" + (hasRegion ? segments.slice(1) : segments).join("/");
 
   return (
     <div className="tabs">
       {Pages.map((page) => {
-        const isActive = pathname.startsWith(`/${page.link}`);
-
+        const href = `/${page.link}`;
+        const isActive = cleanPath === href || cleanPath.startsWith(`${href}/`);
         return (
-          <Link
+          <RegionLink
             href={`/${page.link}`}
             key={page.name}
-            className='tabs__item'
+            className="tabs__item"
           >
-            <span className={`tabs__item-text ${isActive ? 'tabs__item-text-active' : ''}`}>{page.name}</span>
-          </Link>
+            <span
+              className={`tabs__item-text ${
+                isActive ? "tabs__item-text-active" : ""
+              }`}
+            >
+              {page.name}
+            </span>
+          </RegionLink>
         );
       })}
     </div>

@@ -1,14 +1,19 @@
 "use client";
 
 import React from "react";
-import { Select } from "./select/select";
-import { Bar } from "./bar/bar";
+import { Select } from "./select";
+import { Bar } from "./bar";
 import { Tabs } from "./tabs";
 import { Search } from "./search";
 import { Logo_H_Desctop } from "../../svg/logo_H_Desctop";
-import Link from "next/link";
+import { CardsProps } from "@/shared/interface/cards";
+import { RegionLink } from "../region-link";
 
-export const Header: React.FC = () => {
+interface Props {
+  data: CardsProps[];
+}
+
+export const Header: React.FC<Props> = ({data}) => {
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
   return (
     <header className="header">
@@ -21,14 +26,14 @@ export const Header: React.FC = () => {
         {!isSearchOpen && (
           <>
             <Tabs />
-            <Link href="/" className="header__row-logo">
+            <RegionLink href="/" className="header__row-logo">
               <Logo_H_Desctop className="header__row-logo" />
-            </Link>
+            </RegionLink>
             <Select />
           </>
         )}
       </div>
-      <Bar />
+      <Bar Topics={data}/>
     </header>
   );
 };

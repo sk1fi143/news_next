@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import React from 'react';
+import { RegionLink } from '../region-link';
 
 interface Props {
 className?: string;
@@ -12,7 +12,7 @@ id: string | number;
 
 export const PromoCard: React.FC<Props> = ({ className, type, title, description, time, id }) => {
   return (
-    <Link href={`news/${id}`} className={className}>
+    <RegionLink href={`/news/${id}`} className={className}>
         <div className={`promoCard__type`}>
             <span className={`promoCard__type-text`}>{type}</span>
         </div>
@@ -20,6 +20,6 @@ export const PromoCard: React.FC<Props> = ({ className, type, title, description
         <p className={`promoCard__description`}>{description}</p>
         <span className={`promoCard__time`}>{time} назад</span>
         <button className={`promoCard__button`}>Читать материал</button>
-    </Link>
+    </RegionLink>
   );
 };
