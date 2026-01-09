@@ -1,0 +1,66 @@
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    max-width: 680px;
+    width: auto;
+
+    &__title {
+        font-size: 24px;
+        color: $Neutral700;
+        margin-bottom: 40px;
+    }
+
+    &__fullname {
+    margin-top: 32px;
+        font-size: 18px;
+        color: $Neutral700;
+    }
+
+    &__description {
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
+        margin-top: 32px;
+        max-width: 164px;
+    }
+
+    &__description-el {
+        color: $Neutral400;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+    }
+
+    &__address-block {
+        display: flex;
+        flex-direction: column;
+        row-gap: 6px;
+        margin-top: 32px;
+    }
+
+    &__address-title {
+        color: $Neutral400;
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    &__address-txt {
+        color: $Neutral700;
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    &__download-content {
+        display: flex;
+        flex-direction: row;
+        column-gap: 10px;
+        margin-top: 32px;
+        cursor: pointer;
+    }
+
+    &__download-pdf {
+        color: $Primary700;
+        font-size: 12px;
+        margin-bottom: auto;
+    }
+}

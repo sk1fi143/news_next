@@ -1,15 +1,28 @@
+'use client';
+
 import Link from 'next/link';
 import React from 'react';
-import { Pages } from '@models/tabs';
+import { usePathname } from 'next/navigation';
+import { Pages } from '@/shared/models/tabs';
 
 export const Tabs: React.FC = () => {
+  const pathname = usePathname(); // /news/123
+
   return (
-    <div className='tabs'>
-        {Pages.map((page) => (
-            <Link href={page.link} className="tabs__item" key={page.name}>
-                <span className="tabs__item-text">{page.name}</span>
-            </Link>
-        ))}
+    <div className="tabs">
+      {Pages.map((page) => {
+        const isActive = pathname.startsWith(`/${page.link}`);
+
+        return (
+          <Link
+            href={`/${page.link}`}
+            key={page.name}
+            className='tabs__item'
+          >
+            <span className={`tabs__item-text ${isActive ? 'tabs__item-text-active' : ''}`}>{page.name}</span>
+          </Link>
+        );
+      })}
     </div>
   );
 };

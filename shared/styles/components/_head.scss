@@ -1,0 +1,52 @@
+.head {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    align-items: start;
+
+    &__title {
+        color: $Neutral700;
+        font-size: 32px;
+        line-height: 40px;
+    }
+}
+
+.breadcrumbs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 8px;
+
+    &__text {
+        color: $Neutral400;
+        font-size: 14px;
+        line-height: 18px;
+
+        &-active {
+            color: $Neutral700;
+            cursor: default;
+        }
+    }
+}
+
+@media (max-width: 1199px) and (min-width: 768px) {
+.head {
+    &__title {
+        font-size: 36px;
+        line-height: 40px;
+    }
+}
+}
+
+@media (max-width: 767px) {
+.head {
+    &__title {
+        font-size: 24px;
+        line-height: 28px;
+    }
+}
+
+.breadcrumbs {
+    display: none;
+}
+}

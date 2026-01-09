@@ -9,6 +9,6 @@ export const Pages = [
     },
     {
         name: 'О нас',
-        link: 'about_us',
+        link: 'about',
     },
 ]

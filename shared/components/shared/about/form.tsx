@@ -86,7 +86,8 @@ export const Form: React.FC = () => {
         Связаться с нами
       </h2>
       <p className="communication__text">
-        Оставьте свои контактные данные — мы свяжемся с вами.
+        Если у вас есть вопросы или предложения свяжитесь с нами через
+        контактную форму ниже
       </p>
 
       <form
@@ -132,6 +133,9 @@ export const Form: React.FC = () => {
                 <PatternFormat
                   format="+7 (###) ###-##-##"
                   mask="_"
+                  onValueChange={(vals) => {
+                    field.onChange(vals.formattedValue);
+                  }}
                   value={field.value ?? ""}
                   getInputRef={field.ref}
                   placeholder="Ваш телефон"

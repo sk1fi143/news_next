@@ -1,0 +1,34 @@
+.read-now {
+    width: 100%;
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    background-color: $Neutral200;
+
+    &__title {
+        font-size: 32px;
+        color: $Neutral700;
+    }
+    
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0px 16px;
+        
+        .newsCard-S {
+            width: auto;
+            border-bottom: 1px solid $Neutral300;
+            padding: 8px 0px;
+            
+            &:nth-child(4n) {
+                border-right: none;
+            }
+            
+            &:nth-last-child(-n+4) {
+                border-bottom: none;
+            }
+        }
+    }
+}

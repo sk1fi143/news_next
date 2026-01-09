@@ -2,5 +2,16 @@
 @import './footer/footer';
 @import './contact';
 @import './promoCards';
-@import './form';
 @import './cards/cards';
+@import './head';
+@import './about/about';
+@import './sort';
+@import './read-now';
+@import './news-feed';
+@import './socials';
+
+.line {
+    background: $Neutral300;
+    height: 1px;
+    width: 100%;
+}

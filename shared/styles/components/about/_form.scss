@@ -178,3 +178,48 @@
     }
   }
 }
+
+@media (max-width: 1199px) and (min-width: 768px) {
+.communication {
+  row-gap: 24px;
+
+  &__title {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  &__text {
+    margin-top: 16px;
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+}
+
+@media (max-width: 767px) {
+    .communication {
+  row-gap: 24px;
+
+  &__title {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  &__text {
+    margin-top: 0;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  &__form {
+
+    &-fields {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    &-button {
+      width: 100%;
+    }
+  }
+}
+}

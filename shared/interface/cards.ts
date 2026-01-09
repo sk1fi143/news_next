@@ -1,7 +1,6 @@
 export interface CardsProps {
   title: string;
   slug: string;
-  theme: string;
   cardsData: CardProps[];
 }
 

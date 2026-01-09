@@ -13,5 +13,29 @@
         height: 34px;
         border-radius: 50%;
         background: $Neutral500;
+
+        &:hover {
+            background: $Primary700;
+            transition: all 0.3s ease-in-out;
+
+            & svg path {
+                fill: $Neutral700;
+                transition: all 0.3s ease-in-out;
+            }
+        }
     }
+}
+
+@media (max-width: 767px) {
+.social-footer {
+    &__item {
+        width: 32px;
+        height: 32px;
+
+        & svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}
 }

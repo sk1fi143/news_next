@@ -1,15 +1,24 @@
 import React from 'react';
-import { Socials } from '@models/social';
 import Link from 'next/link';
+import { SocialItem } from '@/shared/interface/IAbout';
+import { Vk } from "@cmp/svg/vk";
+import { Tg } from "@cmp/svg/tg";
+import { Odn } from "@cmp/svg/odn"
 
-export const Social: React.FC = () => {
+interface Props {
+  data: SocialItem[];
+}
+
+const ICONS = { Vk, Tg, Odn };
+
+export const Social: React.FC<Props> = ({data}) => {
   return (
     <div className='social-footer'>
-        {Socials.map((social) => {
-            const Icon = social.icon;
+        {data.map((social) => {
+            const Icon = ICONS[social.icon as unknown as keyof typeof ICONS];
             return (
                 <Link href={social.link} className="social-footer__item" key={social.name}>
-                    <Icon fill="white" />
+                    {Icon ? <Icon fill="white" /> : null}
                 </Link>
             );
         })}

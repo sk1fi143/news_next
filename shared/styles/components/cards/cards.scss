@@ -1,56 +1,118 @@
 @import "./card";
 @import "./cards-wrapper";
+@import './head-w-sort';
 
 .newsCards {
+  display: flex;
+  flex-direction: row;
+  column-gap: 32px;
+  align-items: start;
+
+  &__column {
     display: flex;
-    flex-direction: row;
-    column-gap: 32px;
+    flex-direction: column;
     align-items: start;
+    row-gap: 16px;
+
+    &-button {
+      width: 100%;
+      padding: 8px 16px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      background: $Neutral500;
+      border-radius: 40px;
+
+      &-text {
+        color: $white;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        font-family: Inter;
+      }
+
+      &:hover {
+        background: $Primary700;
+        transition: all 0.3s ease-in-out;
+
+        .newsCards__column-button-text {
+          color: $Neutral700;
+          transition: all 0.3s ease-in-out;
+        }
+
+        .newsCards__column-button-icon path {
+          fill: $Neutral700;
+          transition: all 0.3s ease-in-out;
+        }
+      }
+    }
+
+    &-cards {
+      display: flex;
+      flex-direction: column;
+      row-gap: 16px;
+    }
+  }
+}
+
+@media (max-width: 1199px) and (min-width: 768px) {
+  .newsCards {
+    flex-direction: column;
+    row-gap: 32px;
 
     &__column {
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        row-gap: 16px;
+      flex-direction: column-reverse;
+      row-gap: 16px;
 
-        &-button {
-            width: 100%;
-            padding: 8px 16px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            background: $Neutral500;
-            border-radius: 40px;
+      &-button {
+        width: 203px;
+        padding: 8px 16px;
+        border-radius: 40px;
+      }
 
-            &-text {
-                color: $white;
-                font-weight: 500;
-                font-size: 14px;
-                line-height: 18px;
-                font-family: Inter;
-            }
-
-            &:hover {
-                background: $Primary700;
-                transition: all 0.3s ease-in-out;
-
-                .newsCards__column-button-text {
-                    color: $Neutral700;
-                    transition: all 0.3s ease-in-out;
-                }
-
-                .newsCards__column-button-icon path {
-                    fill: $Neutral700;
-                    transition: all 0.3s ease-in-out;
-                }
-            }
-        }
-
-        &-cards {
-            display: flex;
-            flex-direction: column;
-            row-gap: 16px;
-        }
+      &-cards {
+        flex-direction: row;
+        column-gap: 16px;
+      }
     }
+  }
+}
+
+@media (max-width: 767px) {
+  .newsCards {
+    width: 100%;
+    flex-direction: column;
+    row-gap: 8px;
+
+    .newsCard-L {
+      margin-bottom: 8px;
+    }
+
+    .newsCard-M {
+      height: 88px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid $Neutral300;
+    }
+
+    &__column {
+      flex-direction: column-reverse;
+      row-gap: 8px;
+
+      &-button {
+        width: 100%;
+        padding: 8px 16px;
+        border-radius: 40px;
+      }
+
+      &-cards {
+        flex-direction: column;
+        row-gap: 0px;
+
+        .newsCard-M:last-child {
+          display: none;
+        }
+      }
+    }
+  }
 }

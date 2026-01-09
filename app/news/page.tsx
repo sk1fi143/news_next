@@ -7,8 +7,8 @@ import { CardsWrapper } from "@/shared/components/shared/cards/cards-wrapper";
 import { Line } from "@/shared/components/shared/line";
 import React from "react";
 import { HeadWSort } from "@/shared/components/shared/cards/head-w-sort";
-import { ReadNow } from "@/shared/components/shared/read-now";
 import { NewsFeed } from "@/shared/components/shared/news-feed";
+import { ReadNow } from "@/shared/components/shared/read-now";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main>
-      <Head title="Главные новости" />
+      <Head breadcrumbs title="Новости" />
       <div className="page__top">
         <NewsFeed title="Новости" link="news" data={NewsData} />
         <CardsWrapper

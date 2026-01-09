@@ -1,19 +1,40 @@
 .tabs-footer {
-    display: flex;
-    flex-direction: row;
-    column-gap: 8px;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  column-gap: 8px;
+  align-items: center;
 
-    &__item {
-        padding: 8px 16px;
-        background: $Neutral500;
-        border-radius: 40px;
+  &__item {
+    padding: 8px 16px;
+    background: $Neutral500;
+    border-radius: 40px;
 
-        &-text {
-            font-weight: 500;
-            color: $white;
-            font-size: 14px;
-            line-height: 18px;
-        }
+    &:hover {
+      background: $Primary700;
+      transition: all 0.3s ease-in-out;
+
+      & .tabs-footer__item-text {
+        color: $Neutral700;
+        transition: all 0.3s ease-in-out;
+      }
     }
+
+    &-text {
+      font-weight: 500;
+      color: $white;
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .tabs-footer {
+    &__item {
+      &-text {
+        font-size: 12px;
+        line-height: 16px;
+      }
+    }
+  }
 }

@@ -19,7 +19,7 @@ export const Cards: React.FC<Props> = ({ data }) => {
           <ArrowGo className="newsCards__column-button-icon" />
         </Link>
         <div className="newsCards__column-cards">
-          {data.cardsData.slice(1).map((card) => (
+          {data.cardsData.slice(0, 2).map((card) => (
             <Card className="newsCard-M" key={card.id} {...card} />
           ))}
         </div>
