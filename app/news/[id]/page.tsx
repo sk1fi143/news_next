@@ -1,12 +1,7 @@
-import { Cards } from "@cmp/shared/cards/cards";
-import { NewsData } from "@/shared/models/newsData";
-import { PromoCards } from "@cmp/shared/promo/cards";
+import { NewsItemData } from "@/shared/models/newsItemData";
 import { Metadata } from "next";
-import { Head } from "@/shared/components/shared/head";
-import { CardsWrapper } from "@/shared/components/shared/cards/cards-wrapper";
-import { Line } from "@/shared/components/shared/line";
-import React from "react";
-import { HeadWSort } from "@/shared/components/shared/cards/head-w-sort";
+import { NewsPage } from "@/shared/components/shared/news/news";
+import { NewsData } from "@/shared/models/newsData";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,28 +10,6 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main>
-      <Head breadcrumbs breadcrumbsSlug="asdasdasdas" title="Главные новости" />
-      <CardsWrapper title="Последние новости" data={NewsData[0].cardsData} />
-      <Line />
-      <div className="page__column">
-        <HeadWSort title="Все новости" />
-        {NewsData.map((cards, index) => {
-          const isLast = index === NewsData.length - 1;
-          return (
-            <React.Fragment key={cards.title}>
-              <Cards data={cards} />
-              {!isLast && <Line />}
-              {index === 0 && (
-                <React.Fragment>
-                  <PromoCards />
-                  <Line />
-                </React.Fragment>
-              )}
-            </React.Fragment>
-          );
-        })}
-      </div>
-    </main>
+    <NewsPage data={NewsItemData} newsData={NewsData} />
   );
 }

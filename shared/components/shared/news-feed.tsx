@@ -5,8 +5,8 @@ import { Card } from "./cards/card";
 import { CardProps } from "@/shared/interface/cards";
 import { RegionLink } from "./region-link";
 
-interface SidebarData {
-  slug: string;
+export interface SidebarData {
+  slug?: string;
   cardsData: CardProps[];
 }
 
@@ -56,9 +56,7 @@ export const NewsFeed: React.FC<Props> = ({ title, link, data }) => {
                     location={card.location}
                     time={card.time}
                     imageUrl={card.imageUrl}
-                    className={`newsCard ${
-                      index === 0 ? "newsCard-M" : "newsCard-S"
-                    }`}
+                    className={`newsCard newsCard-S`}
                   />
                 ))
           )}
@@ -76,9 +74,7 @@ export const NewsFeed: React.FC<Props> = ({ title, link, data }) => {
                     location={card.location}
                     time={card.time}
                     imageUrl={card.imageUrl}
-                    className={`newsCard ${
-                      index === 0 ? "newsCard-M" : "newsCard-S"
-                    }`}
+                    className={`newsCard newsCard-S`}
                   />
                 ))
           )}

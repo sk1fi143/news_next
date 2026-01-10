@@ -1,6 +1,7 @@
 export interface CardsProps {
   title: string;
-  slug: string;
+  slug?: string;
+  region?: string;
   cardsData: CardProps[];
 }
 
@@ -12,3 +13,4 @@ export interface CardProps {
   time: string;
   imageUrl: string;
 }
+

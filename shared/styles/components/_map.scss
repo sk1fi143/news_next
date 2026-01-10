@@ -1,0 +1,145 @@
+.map {
+    display: flex;
+    flex-direction: column;
+    max-width: 1376px;
+    width: 100%;
+    margin: 0px auto;
+
+    &__title {
+        font-size: 40px;
+        color: $Neutral700;
+    }
+
+    &__take {
+        font-weight: 400;
+        font-size: 16px;
+        color: $Neutral700;
+        margin-top: 16px;
+    }
+
+    &__main-info {
+        position: relative;
+        width: 100%;
+        max-height: 762px;
+
+        &-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    &__nijni,
+    &__mari,
+    &__tat,
+    &__chuvash {
+        position: absolute;
+    }
+
+    &__nijni {
+        top: 282.5px;
+        left: 121.65px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__nijni-line {
+        height: 40px;
+        width: 2px;
+        background-color: $Primary700;
+    }
+
+    &__mari {
+        top: 374.5px;
+        left: 253.65px;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+
+    &__mari-line {
+        height: 2px;
+        width: 40px;
+        background-color: $Primary700;
+    }
+
+    &__tat {
+        top: 416.5px;
+        left: 267.65px;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+    
+    &__tat-line {
+        height: 2px;
+        width: 80px;
+        background-color: $Primary700;
+    }
+
+    &__chuvash {
+        top: 397.5px;
+        left: 122.65px;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+        &__chuvash-line {
+        height: 40px;
+        width: 2px;
+        background-color: $Primary700;
+    }
+    
+    &__card-content {
+        display: flex;
+        flex-direction: row;
+        column-gap: 8px;
+        padding: 8px 16px;
+        background-color: $white;
+        border: 1px solid $Neutral300;
+        border-radius: 17px;
+        cursor: pointer;
+    }
+
+    &-active {
+        background-color: $Primary700;
+    }
+
+    &__circle {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 1px solid $Primary700;
+        background-color: #fff;
+    }
+
+    &__region {
+        font-size: 24px;
+        color: $Neutral700;
+    }
+
+    &__news-list {
+        display: flex;
+        flex-direction: row;
+        margin-top: 32px;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    &__result {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__button-link {
+        padding: 16px 20px;
+        background-color: $Neutral500;
+        border-radius: 26px;
+        color: $white;
+        font-size: 16px;
+        margin: 20px auto 0px auto;
+        cursor: pointer;
+    }
+}

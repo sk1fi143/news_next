@@ -2,6 +2,7 @@ export const NewsData = [
   {
     title: "Власть",
     slug: "vlast",
+    region: "Республика Марий Эл",
     cardsData: [
       {
         id: "1",
@@ -128,6 +129,7 @@ export const NewsData = [
   {
     title: "Политика",
     slug: "politika",
+    region: "Республика Татарстан",
     cardsData: [
       {
         id: "16",
@@ -153,14 +155,31 @@ export const NewsData = [
         location: "Марий Эл",
         imageUrl: "/public/images/card.png",
       },
+      {
+        id: "21",
+        title:
+          "В 2026 году россиян ждут сразу семь сокращённых рабочих недель и ни одной шестидневки",
+        time: "30 минут",
+        location: "Марий Эл",
+        imageUrl: "/public/images/card.png",
+      },
     ],
   },
   {
     title: "Экономика",
     slug: "economics",
+    region: "Республика Чувашия",
     cardsData: [
       {
         id: "19",
+        title:
+          "В 2026 году россиян ждут сразу семь сокращённых рабочих недель и ни одной шестидневки",
+        time: "30 минут",
+        location: "Марий Эл",
+        imageUrl: "/public/images/card.png",
+      },
+      {
+        id: "21",
         title:
           "В 2026 году россиян ждут сразу семь сокращённых рабочих недель и ни одной шестидневки",
         time: "30 минут",
@@ -188,9 +207,18 @@ export const NewsData = [
   {
     title: "Спорт",
     slug: "sport",
+    region: "Нижегородская Область",
     cardsData: [
       {
         id: "22",
+        title:
+          "В 2026 году россиян ждут сразу семь сокращённых рабочих недель и ни одной шестидневки",
+        time: "30 минут",
+        location: "Марий Эл",
+        imageUrl: "/public/images/card.png",
+      },
+      {
+        id: "21",
         title:
           "В 2026 году россиян ждут сразу семь сокращённых рабочих недель и ни одной шестидневки",
         time: "30 минут",

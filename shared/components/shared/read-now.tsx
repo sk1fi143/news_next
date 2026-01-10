@@ -1,14 +1,9 @@
 import React from "react";
 import { Card } from "@/shared/components/shared/cards/card";
-import { CardProps } from "@/shared/interface/cards";
+import { SidebarData } from "./news-feed";
 
 interface Props {
   data: SidebarData[];
-}
-
-interface SidebarData {
-  slug: string;
-  cardsData: CardProps[];
 }
 
 export const ReadNow: React.FC<Props> = ({ data }) => {

@@ -9,6 +9,7 @@ import React from "react";
 import { HeadWSort } from "@/shared/components/shared/cards/head-w-sort";
 import { ReadNow } from "@/shared/components/shared/read-now";
 import { NewsFeed } from "@/shared/components/shared/news-feed";
+import { Map } from "@/shared/components/shared/map";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -54,6 +55,7 @@ export default async function Home() {
         })}
       </div>
       <ReadNow data={NewsData}/>
+      <Map data={NewsData}/>
     </main>
   );
 }
