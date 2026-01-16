@@ -1,11 +1,36 @@
 .sort {
-    width: 343px;
-    height: 34px;
-    padding: 8px;
-    border-radius: 8px;
-    background-color: $Neutral200;
+  width: 343px;
+  height: 34px;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: $Neutral200;
 }
 
 .main-sort {
-    width: 343px;
+  width: 343px;
+}
+
+.select__hidden {
+  z-index: 1;
+}
+
+@media (max-width: 1199px) and (min-width: 768px) {
+  .sort {
+    width: 316px;
+    height: 34px;
+  }
+  .main-sort {
+    width: 316px;
+  }
+}
+
+@media (max-width: 767px) {
+    .sort {
+    width: 100%;
+    height: 34px;
+  }
+  .main-sort {
+    display: flex;
+    width: 100%;
+  }
 }

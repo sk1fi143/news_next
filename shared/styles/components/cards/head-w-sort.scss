@@ -11,3 +11,18 @@
         line-height: 40px;
     }
 }
+
+@media (max-width: 767px) {
+    .HeadWSort {
+    flex-direction: column;
+    align-items: start;
+    row-gap: 16px;
+    width: 100%;
+
+    &__title {
+        color: $Neutral700;
+        font-size: 32px;
+        line-height: 40px;
+    }
+}
+}

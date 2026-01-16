@@ -18,7 +18,7 @@ interface Props {
 }
 export const NewsPage: React.FC<Props> = ({ data, newsData }) => {
   return (
-    <main>
+    <main className="newsMain">
       <Head breadcrumbs title={data.title} breadcrumbsSlug={data.title} />
       <div className="news__content">
         <div className="news__left-content">
@@ -29,6 +29,12 @@ export const NewsPage: React.FC<Props> = ({ data, newsData }) => {
               </div>
             ))}
           </div>
+
+          <NewsInfo
+            update={data.info.update}
+            author={data.info.author}
+            timeRead={data.info.timeRead}
+          />
 
           {data.content.map((item, index) => {
             const TitleTag =
@@ -64,7 +70,7 @@ export const NewsPage: React.FC<Props> = ({ data, newsData }) => {
 
                 {item.numListText && (
                   <div className="num-list-block">
-                    {item.numTitle && <h4>{item.numTitle}</h4>}
+                    {item.numTitle && <h5>{item.numTitle}</h5>}
                     <ol>
                       {item.numListText
                         .split("\n")
@@ -77,7 +83,7 @@ export const NewsPage: React.FC<Props> = ({ data, newsData }) => {
 
                 {item.markListText && (
                   <div className="mark-list-block">
-                    {item.markTitle && <h5>{item.markTitle}</h5>}
+                    {item.markTitle && <h6>{item.markTitle}</h6>}
                     <ul>
                       {item.markListText
                         .split("\n")
@@ -99,12 +105,7 @@ export const NewsPage: React.FC<Props> = ({ data, newsData }) => {
         </div>
 
         <div className="news__right-content">
-          <NewsInfo
-            update={data.info.update}
-            author={data.info.author}
-            timeRead={data.info.timeRead}
-          />
-          <NewsFeed title="Новости" link="news" data={newsData} />
+          <NewsFeed title="Новости" link="news" data={newsData}  firstCard="newsCard-S"/>
         </div>
       </div>
       <Line />

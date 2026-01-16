@@ -1,3 +1,8 @@
-@import './app';
-@import './about';
-@import './news';
+@import "./app";
+@import "./about";
+@import "./notFound";
+@import "./contacts";
+
+.newsMain {
+  @import "./news";
+}

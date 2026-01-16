@@ -26,3 +26,25 @@
     column-gap: 16px;
   }
 }
+
+@media (max-width: 1199px) and (min-width: 768px) {
+  .about-us{
+    margin-top: -16px;
+  }
+  
+    .about-us__cards {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        row-gap: 16px;
+    }
+}
+
+@media (max-width: 767px) {
+    .about-us__cards {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        row-gap: 16px;
+    }
+}

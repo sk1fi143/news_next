@@ -11,4 +11,8 @@ export const Pages = [
         name: 'О нас',
         link: 'about',
     },
+    {
+        name: 'Контакты',
+        link: 'contacts',
+    },
 ]

@@ -1,86 +1,124 @@
 .news-feed {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  max-width: 316px;
+  min-width: 280px;
+
+  &__topBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__title {
+    font-size: 18px;
+    line-height: 22px;
+    color: $Neutral700;
+    margin-top: auto;
+  }
+
+  &__navigation {
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+  }
+
+  &__tab {
+    padding: 8px 16px;
+    background-color: $Neutral200;
+    border: none;
+    border-radius: 14px;
+    font-size: 12px;
+    line-height: 12px;
+    color: $Neutral700;
+    font-family: Inter;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background: $Neutral300;
+    }
+  }
+
+  &__tab--active {
+    background-color: $Primary700;
+
+    &:hover {
+      background: $Primary700;
+    }
+  }
+
+  &__content {
     display: flex;
     flex-direction: column;
-    row-gap: 24px;
-    max-width: 316px;
+    row-gap: 8px;
 
-    &__topBar {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        width: 100%;
+    .newsCard {
+      border-bottom: 1px solid $Neutral300;
+      width: 100%;
+      padding-bottom: 8px;
+
+      &:last-child {
+        border-bottom: none;
+      }
     }
+  }
+
+  &__button {
+    margin-top: -24px;
+    width: 100%;
+    background: $Neutral500;
+    cursor: pointer;
+    border-radius: 40px;
+    padding: 8px 0;
+    font-size: 14px;
+    line-height: 18px;
+    font-family: Inter;
+    font-weight: 500;
+    color: $white;
+    border: none;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background: $Primary700;
+      color: $Neutral700;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .news-feed {
+    row-gap: 24px;
+    max-width: 100%;
+    width: 100%;
 
     &__title {
-        font-size: 18px;
-        line-height: 22px;
-        color: $Neutral700;
-        margin-top: auto;
-    }
-
-    &__navigation {
-        display: flex;
-        flex-direction: row;
-        column-gap: 8px;
-    }
-
-    &__tab {
-        padding: 8px 16px;
-        background-color: $Neutral200;
-        border: none;
-        border-radius: 14px;
-        font-size: 12px;
-        color: $Neutral700;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-
-        &:hover {
-            background: $Neutral300;
-        }
-    }
-
-    &__tab--active {
-        background-color: $Primary700;
-        
-        &:hover {
-            background: $Primary700;
-        }
+      font-size: 16px;
+      line-height: 20px;
     }
 
     &__content {
-        display: flex;
-        flex-direction: column;
-        
-        .newsCard {
-            border-bottom: 1px solid $Neutral300;
-            width: 100%;
-            padding: 8px 0;
+      .newsCard {
+        height: 89px;
 
-            &:last-child {
-            border-bottom: none;
+        &:last-child {
+         display: none;
         }
-        }
+      }
+    }
+
+    &__navigation {
+      display: flex;
+      flex-direction: row;
+      column-gap: 8px;
     }
 
     &__button {
-        margin-top: -24px;
-        width: 100%;
-        background: $Neutral500;
-        cursor: pointer;
-        border-radius: 40px;
-        padding: 8px 0;
-        font-size: 14px;
-        line-height: 18px;
-        font-family: Inter;
-        font-weight: 500;
-        color: $white;
-        border: none;
-        text-align: center;
-        transition: all 0.3s ease-in-out;
-
-        &:hover {
-            background: $Primary700;
-            color: $Neutral700;
-        }
-    }
+    margin-top: -16px;
+  }
+  }
 }

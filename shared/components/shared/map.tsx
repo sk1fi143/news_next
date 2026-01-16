@@ -30,12 +30,14 @@ export const Map: React.FC<Props> = ({ data }) => {
       <h2 className="map__title">Последние новости на карте</h2>
       <span className="map__take">Выберите регион, чтобы увидеть новости</span>
       <div className="map__main-info">
-        <Image
-          className="map__main-info-img"
-          src={MapImage}
-          alt="Большая карта страны с отмеченными регионами"
-        />
-
+        <div className="map__cover-img">
+          <Image
+            className="map__main-info-img"
+            src={MapImage}
+            alt="Большая карта страны с отмеченными регионами"
+          />
+        </div>
+        <div className="map__category">
         {MapRegions.map((region) => (
           <div
             key={region.id}
@@ -54,6 +56,7 @@ export const Map: React.FC<Props> = ({ data }) => {
             <div className="map__circle"></div>
           </div>
         ))}
+        </div>
       </div>
 
       <div className="map__result">

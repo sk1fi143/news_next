@@ -1,0 +1,68 @@
+.notFound {
+  display: flex;
+  width: 100%;
+  padding: 80px 27px;
+  flex-direction: column;
+  row-gap: 32px;
+  align-items: center;
+
+  &__error {
+    font-family: Inter;
+    font-size: 48px;
+    line-height: 54px;
+    font-weight: 500;
+    color: $Neutral700;
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 40px;
+    color: $Neutral700;
+  }
+
+  &__decription {
+    font-size: 16px;
+    line-height: 20px;
+    color: $Neutral700;
+    text-align: center;
+
+    &-primary {
+      color: $Primary700;
+      cursor: pointer;
+    }
+  }
+
+  &__button {
+    padding: 16px 20px;
+    margin-top: -8px;
+    border-radius: 40px;
+    background: $Neutral500;
+    color: $white;
+    font-size: 16px;
+    line-height: 20px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background: $Primary700;
+      color: $Neutral700;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .notFound {
+    padding: 187px 44px;
+    row-gap: 28px;
+
+    &__decription {
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    &__button {
+      margin-top: -4px;
+    }
+  }
+}

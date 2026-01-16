@@ -14,9 +14,10 @@ interface Props {
   title: string;
   data: SidebarData[];
   link: string;
+  firstCard?: string;
 }
 
-export const NewsFeed: React.FC<Props> = ({ title, link, data }) => {
+export const NewsFeed: React.FC<Props> = ({ title, link, data, firstCard }) => {
   const [activeTab, setActiveTab] = useState<"new" | "popular">("new");
   return (
     <div className="news-feed">
@@ -56,7 +57,7 @@ export const NewsFeed: React.FC<Props> = ({ title, link, data }) => {
                     location={card.location}
                     time={card.time}
                     imageUrl={card.imageUrl}
-                    className={`newsCard newsCard-S`}
+                    className={`newsCard ${index === 0 ? `${firstCard}` : 'newsCard-S'}`}
                   />
                 ))
           )}
@@ -74,7 +75,7 @@ export const NewsFeed: React.FC<Props> = ({ title, link, data }) => {
                     location={card.location}
                     time={card.time}
                     imageUrl={card.imageUrl}
-                    className={`newsCard newsCard-S`}
+                    className={`newsCard ${index === 0 ? `${firstCard}` : 'newsCard-S'}`}
                   />
                 ))
           )}

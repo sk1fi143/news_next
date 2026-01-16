@@ -9,6 +9,7 @@ import React from "react";
 import { HeadWSort } from "@/shared/components/shared/cards/head-w-sort";
 import { NewsFeed } from "@/shared/components/shared/news-feed";
 import { ReadNow } from "@/shared/components/shared/read-now";
+import { Map } from "@/shared/components/shared/map";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,13 +21,13 @@ export default function Home() {
     <main>
       <Head breadcrumbs title="Статьи" />
       <div className="page__top">
-        <NewsFeed title="Новости" link="news" data={NewsData} />
+        <NewsFeed title="Новости" link="news" data={NewsData} firstCard="newsCard-M" />
         <CardsWrapper
           className="cards-wrapper__title-sm"
           title="Последние новости"
           data={NewsData[0].cardsData}
         />
-        <NewsFeed title="Статьи" link="articles" data={NewsData} />
+        <NewsFeed title="Статьи" link="articles" data={NewsData} firstCard="newsCard-S" />
       </div>
       <Line />
       <div className="page__column">
@@ -48,6 +49,7 @@ export default function Home() {
         })}
       </div>
       <ReadNow data={NewsData}/>
+      <Map data={NewsData}/>
     </main>
   );
 }

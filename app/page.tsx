@@ -27,13 +27,13 @@ export default async function Home() {
     <main>
       <Head title="Главные новости" />
       <div className="page__top">
-        <NewsFeed title="Новости" link="news" data={NewsData} />
+        <NewsFeed title="Новости" link="news" data={NewsData} firstCard="newsCard-F"/>
         <CardsWrapper
           className="cards-wrapper__title-sm"
           title="Последние новости"
           data={NewsData[0].cardsData}
         />
-        <NewsFeed title="Статьи" link="articles" data={NewsData} />
+        <NewsFeed title="Статьи" link="articles" data={NewsData} firstCard="newsCard-S"/>
       </div>
       <Line />
       <div className="page__column">

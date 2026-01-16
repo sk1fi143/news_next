@@ -55,7 +55,8 @@
     }
   }
 
-  &-M {
+  &-M,
+  &-F {
     display: flex;
     gap: 8px;
     max-width: 332px;
@@ -82,7 +83,7 @@
     display: flex;
     gap: 8px;
     width: 332px;
-    height: 112px;
+    height: 121px;
     flex-direction: row;
 
     .newsCard__img {
@@ -97,7 +98,8 @@
         line-height: 18px;
         overflow: hidden;
         display: -webkit-box;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
         -webkit-box-orient: vertical;
         text-overflow: ellipsis;
       }
@@ -119,7 +121,6 @@
   .newsCard {
     &-L {
       width: 728px;
-      flex: 0 0 728px;
 
       .newsCard__img {
         height: 546px;
@@ -135,7 +136,6 @@
 
     &-M {
       width: 356px;
-      flex: 0 0 356px;
 
       .newsCard__img {
         height: 267px;
@@ -149,28 +149,35 @@
       }
     }
 
-    &-S {
+    &-S,
+    &-F {
+      flex-direction: row;
       width: 356px;
       height: 100px;
 
       .newsCard__img {
         width: 134px;
+        height: 100%;
+        border-radius: 8px;
       }
 
       .newsCard__description {
         &-title {
-          font-size: 16px;
-          line-height: 20px;
+          font-size: 14px;
+          line-height: 18px;
           overflow: hidden;
           display: -webkit-box;
           -webkit-line-clamp: 3;
+          line-clamp: 3;
           -webkit-box-orient: vertical;
           text-overflow: ellipsis;
         }
 
         &-info {
-          flex-direction: row;
-        }
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 8px;
+      }
       }
     }
   }
@@ -202,7 +209,8 @@
     }
 
     &-M,
-    &-S {
+    &-S,
+    &-F {
       display: flex;
       flex-direction: row;
       width: 100%;
@@ -222,12 +230,14 @@
           line-height: 20px;
           overflow: hidden;
           display: -webkit-box;
+          line-clamp: 3;
           -webkit-line-clamp: 3;
           -webkit-box-orient: vertical;
           text-overflow: ellipsis;
         }
 
         &-info {
+          display: flex;
           flex-direction: row;
         }
       }

@@ -1,1 +1,9 @@
 @import './news-info';
+
+@media (max-width: 1199px) and (min-width: 768px) {
+    .news {
+        &__content {
+            flex-direction: column;
+        }
+    }   
+}

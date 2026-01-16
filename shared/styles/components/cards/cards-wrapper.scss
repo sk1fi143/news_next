@@ -38,6 +38,7 @@
     }
 
     &__cards {
+      display: flex;
       gap: 16px;
       width: min-content;
       flex-wrap: wrap;
@@ -61,10 +62,22 @@
 
     &__cards {
       display: flex;
-      gap: 8px;
       flex-direction: column;
+      gap: 8px;
       width: 100%;
       flex-wrap: nowrap;
+
+      .newsCard-L {
+        padding-bottom: 16px;
+        margin-bottom: 8px;
+        border-bottom: 1px solid $Neutral300;
+      }
+
+      .newsCard-M {
+        padding-bottom: 8px;
+        height: 89px;
+        border-bottom: 1px solid $Neutral300;
+      }
     }
   }
 }
