@@ -7,32 +7,32 @@ data: IDocuments[];
 
 export const DocsLayout: React.FC<Props> = ({ data }) => {
   return (
-    <div className=''>
+    <div className='docs'>
         {data.map((doc, index) => (
-            <section key={index} className=''>
-                <h4 className=''>{doc.title}</h4>
-                <h6 className=''>{doc.subtitle}</h6>
+            <section key={index} className='docs__section'>
+                <h4 className='docs__section-title'>{doc.title}</h4>
+                <h6 className='docs__section-subtitle'>{doc.subtitle}</h6>
                 {doc.numList && (
-                    <ol className=''>
+                    <ol className='docs__section-numlist'>
                       {doc.numList
                         .split("\n")
                         .map(
-                          (li, liIdx) => li.trim() && <li key={liIdx}>{li}</li>
+                          (li, liIdx) => li.trim() && <li key={liIdx} className='docs__section-numlist-item'>{li}</li>
                         )}
                     </ol>
                 )}
 
                 {doc.markList && (
-                    <ul className=''>
+                    <ul className='docs__section-marklist'>
                       {doc.markList
                         .split("\n")
                         .map(
-                          (li, liIdx) => li.trim() && <li key={liIdx}>{li}</li>
+                          (li, liIdx) => li.trim() && <li key={liIdx} className='docs__section-marklist-item'>{li}</li>
                         )}
                     </ul>
                 )}
 
-                <p className=''>{doc.text}</p>
+                <p className='docs__section-text'>{doc.text}</p>
             </section>
         ))}
     </div>

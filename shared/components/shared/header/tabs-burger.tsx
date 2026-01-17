@@ -30,7 +30,11 @@ const MobileNavItems = [
   },
 ];
 
-export const TabsMobileNavigation: React.FC = () => {
+interface Props {
+  onItemClick?: () => void; 
+}
+
+export const TabsMobileNavigation: React.FC<Props> = ({ onItemClick }) => {
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);
   const hasRegion = Regions.some((r) => r.url === segments[0]);
@@ -45,6 +49,7 @@ export const TabsMobileNavigation: React.FC = () => {
         
         return (
           <RegionLink
+            onClick={onItemClick}
             key={item.name}
             href={href}
             className={`${item.className} ${isActive ? "active" : ""}`}
