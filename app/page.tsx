@@ -1,15 +1,7 @@
-import { Cards } from "@cmp/shared/cards/cards";
 import { NewsData } from "@/shared/models/newsData";
-import { PromoCards } from "@cmp/shared/promo/cards";
 import { Metadata } from "next";
-import { Head } from "@/shared/components/shared/head";
-import { CardsWrapper } from "@/shared/components/shared/cards/cards-wrapper";
-import { Line } from "@/shared/components/shared/line";
 import React from "react";
-import { HeadWSort } from "@/shared/components/shared/cards/head-w-sort";
-import { ReadNow } from "@/shared/components/shared/read-now";
-import { NewsFeed } from "@/shared/components/shared/news-feed";
-import { Map } from "@/shared/components/shared/map";
+import { MainLayout } from "@/shared/components/pages/mainLayout";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,39 +15,5 @@ export default async function Home() {
   //   `${API}/home${region ? `?region=${region}` : ""}`
   // ).then(r => r.json());
 
-  return (
-    <main>
-      <Head title="Главные новости" />
-      <div className="page__top">
-        <NewsFeed title="Новости" link="news" data={NewsData} firstCard="newsCard-F"/>
-        <CardsWrapper
-          className="cards-wrapper__title-sm"
-          title="Последние новости"
-          data={NewsData[0].cardsData}
-        />
-        <NewsFeed title="Статьи" link="articles" data={NewsData} firstCard="newsCard-S"/>
-      </div>
-      <Line />
-      <div className="page__column">
-        <HeadWSort title="Все новости" />
-        {NewsData.map((cards, index) => {
-          const isLast = index === NewsData.length - 1;
-          return (
-            <React.Fragment key={cards.title}>
-              <Cards data={cards} />
-              {!isLast && <Line />}
-              {index === 0 && (
-                <React.Fragment>
-                  <PromoCards />
-                  <Line />
-                </React.Fragment>
-              )}
-            </React.Fragment>
-          );
-        })}
-      </div>
-      <ReadNow data={NewsData}/>
-      <Map data={NewsData}/>
-    </main>
-  );
+  return <MainLayout data={NewsData} type="Новости"/>;
 }

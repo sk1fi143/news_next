@@ -4,12 +4,13 @@ import React from 'react';
 import { Vk } from "@cmp/svg/vk";
 import { Tg } from "@cmp/svg/tg";
 import { Odn } from "@cmp/svg/odn"
+import { Max } from '../svg/max';
 
 interface Props {
 soc: SocialItem[];
 }
 
-const ICONS = { Vk, Tg, Odn };
+const ICONS = { Vk, Tg, Odn, Max };
 
 export const Socials: React.FC<Props> = ({ soc }) => {
   return (

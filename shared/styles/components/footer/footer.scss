@@ -1,177 +1,177 @@
-@import './tabs';
-@import './social';
+@import "./tabs";
+@import "./social";
 
 .footer {
-    width: 100%;
-    padding: 20px 32px;
+  width: 100%;
+  padding: 20px 32px;
 
-    &__logo {
-        width: 180px;
-        height: 80px;
+  &__logo {
+    width: 180px;
+    height: 80px;
+  }
+
+  &__content {
+    border-radius: 24px;
+    background: $Neutral600;
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &-column {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      row-gap: 24px;
+
+      &-text {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        color: $white;
+        margin-top: auto;
+        max-width: 65%;
+      }
     }
 
-    &__content {
-        border-radius: 24px;
-        background: $Neutral600;
-        padding: 40px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+    &-columnContacts {
+      display: flex;
+      flex-direction: column;
+      row-gap: 16px;
+      align-items: start;
 
-        &-column {
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            row-gap: 24px;
+      &-title {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28px;
+        color: $white;
+      }
+    }
 
-            &-text {
-                font-weight: 500;
-                font-size: 16px;
-                line-height: 20px;
-                color: $white;
-                margin-top: auto;
-                max-width: 65%;
-            }
-        }
+    &-contacts {
+      display: grid;
+      grid-template-columns: repeat(2, 312px);
+      gap: 16px;
 
-        &-columnContacts {
-            display: flex;
-            flex-direction: column;
-            row-gap: 16px;
-            align-items: start;
-
-            &-title {
-                font-weight: 500;
-                font-size: 24px;
-                line-height: 28px;
-                color: $white;
-            }
-        }
-
-        &-contacts {
-        display: grid;
-        grid-template-columns: repeat(2, 312px);
-        gap: 16px;
-
-        & > *:nth-last-child(-n + 2) {
+      & > *:last-child {
         margin-top: 24px;
+      }
     }
-    }
-    }
+  }
 }
 
 .contact__row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    column-gap: 4px;
-    cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 4px;
+  cursor: pointer;
 
-    &-link {
-        &:hover {
-            svg path {
-                fill: $Primary700;
-                transition: all 0.3s ease-in-out;
-            }
-            span {
-                color: $Primary700;
-                transition: all 0.3s ease-in-out;
-            }
-        }
+  &-link {
+    &:hover {
+      svg path {
+        fill: $Primary700;
+        transition: all 0.3s ease-in-out;
+      }
+      span {
+        color: $Primary700;
+        transition: all 0.3s ease-in-out;
+      }
     }
+  }
 }
 
 @media (max-width: 1199px) and (min-width: 768px) {
-.footer {
+  .footer {
     padding: 20px;
 
     &__logo {
-        width: 180px;
-        height: 80px;
+      width: 180px;
+      height: 80px;
     }
 
     &__content {
-        flex-direction: column;
-        border-radius: 24px;
-        padding: 40px;
-        row-gap: 40px;
+      flex-direction: column;
+      border-radius: 24px;
+      padding: 40px;
+      row-gap: 40px;
 
-        &-column {
-            row-gap: 24px;
+      &-column {
+        row-gap: 24px;
 
-            &-text {
-                margin-top: 16px;
-                font-size: 16px;
-                line-height: 20px;
-                max-width: 100%;
-            }
+        &-text {
+          margin-top: 16px;
+          font-size: 16px;
+          line-height: 20px;
+          max-width: 100%;
         }
+      }
 
-        &-columnContacts {
-            row-gap: 16px;
+      &-columnContacts {
+        row-gap: 16px;
 
-            &-title {
-                font-size: 24px;
-                line-height: 28px;
-            }
+        &-title {
+          font-size: 24px;
+          line-height: 28px;
         }
+      }
 
-        &-contacts {
+      &-contacts {
         grid-template-columns: repeat(2, 312px);
         gap: 16px;
 
-        & > *:nth-last-child(-n + 2) {
+         & > *:last-child {
         margin-top: 24px;
+      }
+      }
     }
-    }
-    }
-}
+  }
 }
 
 @media (max-width: 767px) {
-.footer {
+  .footer {
     padding: 16px;
     padding-bottom: 90px;
 
     &__logo {
-        width: 134px;
-        height: 60px;
+      width: 134px;
+      height: 60px;
     }
 
     &__content {
-        flex-direction: column;
-        border-radius: 24px;
-        padding: 24px;
+      flex-direction: column;
+      border-radius: 24px;
+      padding: 24px;
+      row-gap: 24px;
+
+      &-column {
         row-gap: 24px;
 
-        &-column {
-            row-gap: 24px;
-
-            &-text {
-                margin-top: 0;
-                font-size: 14px;
-                line-height: 20px;
-                max-width: 100%;
-            }
+        &-text {
+          margin-top: 0;
+          font-size: 14px;
+          line-height: 20px;
+          max-width: 100%;
         }
+      }
 
-        &-columnContacts {
-            row-gap: 20px;
+      &-columnContacts {
+        row-gap: 20px;
 
-            &-title {
-                font-size: 20px;
-                line-height: 24px;
-            }
+        &-title {
+          font-size: 20px;
+          line-height: 24px;
         }
+      }
 
-        &-contacts {
+      &-contacts {
         grid-template-columns: repeat(1, auto);
         gap: 16px;
 
-        & > *:nth-last-child(-n + 2) {
+         & > *:last-child {
         margin-top: 0px;
+      }
+      }
     }
-    }
-    }
-}
+  }
 }

@@ -5,7 +5,6 @@ import { Select } from "./select";
 import { Bar } from "./bar";
 import { Tabs } from "./tabs";
 import { Search } from "./search";
-import { Logo_H_Desctop } from "../../svg/logo_H_Desctop";
 import { CardsProps } from "@/shared/interface/cards";
 import { RegionLink } from "../region-link";
 import { Logo_Mob } from "../../svg/logo-mob";
@@ -25,21 +24,24 @@ export const Header: React.FC<Props> = ({ data }) => {
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
   const [isBurgerOpen, setIsBurgerOpen] = React.useState(false);
   React.useEffect(() => {
-  if (isBurgerOpen) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = 'unset';
-  }
-  return () => {
-    document.body.style.overflow = 'unset';
-  };
-}, [isBurgerOpen]);
+    if (isBurgerOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isBurgerOpen]);
 
   return (
     <header className={`header ${isBurgerOpen ? "header-fixed" : ""}`}>
       <div className="header__row">
-        <RegionLink href="/">
+        <RegionLink className="header__logo-mob" href="/">
           <Logo_Mob className="header__logo-mob" />
+        </RegionLink>
+        <RegionLink href="/" className="header__row-logo">
+          <Logo_Mob className="header__row-logo" />
         </RegionLink>
         <Search
           isOpen={isSearchOpen}
@@ -49,10 +51,7 @@ export const Header: React.FC<Props> = ({ data }) => {
         {!isSearchOpen && (
           <>
             <Tabs />
-            <RegionLink href="/" className="header__row-logo">
-              <Logo_H_Desctop className="header__row-logo" />
-            </RegionLink>
-            <Select />
+            <Select topics={data}/>
           </>
         )}
         <div className="header__info-mob">
@@ -74,7 +73,7 @@ export const Header: React.FC<Props> = ({ data }) => {
           </div>
         </div>
       </div>
-      <Bar Topics={data} />
+      <Bar />
       {isBurgerOpen && (
         <div className="burger-block">
           <div
@@ -84,12 +83,12 @@ export const Header: React.FC<Props> = ({ data }) => {
             <Cross />
           </div>
           <div className="header__burger-line"></div>
-          <h6 className="header__burger-title">Регион</h6>
-          <Select />
+          <h6 className="header__burger-title">Категории новостей</h6>
+          <Select topics={data} onItemClick={() => setIsBurgerOpen(false)}/>
           <div className="header__burger-line"></div>
           <div className="header__burger-category">
-            <h6 className="header__burger-title">Категории новостей</h6>
-            <BarMod Topics={data} onItemClick={() => setIsBurgerOpen(false)} />
+            <h6 className="header__burger-title">Регион</h6>
+            <BarMod />
           </div>
           <div className="header__burger-line"></div>
           <TabsMob onItemClick={() => setIsBurgerOpen(false)} />

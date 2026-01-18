@@ -1,22 +1,22 @@
 import { NewsInfo } from "@/shared/components/shared/news/news-info";
 import { INewsItem } from "@/shared/interface/INews";
-import { Head } from "../head";
-import { NewsFeed } from "../news-feed";
+import { Head } from "../shared/head";
+import { NewsFeed } from "../shared/news-feed";
 import Image from "next/image";
 import TestImage from "@img/card.png";
 import { Fragment } from "react/jsx-runtime";
-import { Socials } from "../socials";
+import { Socials } from "../shared/socials";
 import { AboutData } from "@/shared/models/about";
 import { SocialItem } from "@/shared/interface/IAbout";
-import { Line } from "../line";
-import { ReadNow } from "../read-now";
-import { Map } from "../map";
+import { Line } from "../shared/line";
+import { ReadNow } from "../shared/read-now";
+import { Map } from "../shared/map";
 import { CardsProps } from "@/shared/interface/cards";
 interface Props {
   data: INewsItem;
   newsData: CardsProps[];
 }
-export const NewsPage: React.FC<Props> = ({ data, newsData }) => {
+export const NewsPageLayout: React.FC<Props> = ({ data, newsData }) => {
   return (
     <main className="newsMain">
       <Head breadcrumbs title={data.title} breadcrumbsSlug={data.title} />

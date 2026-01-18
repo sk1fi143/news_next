@@ -2,25 +2,22 @@
 
 import React, { useState } from "react";
 import { Card } from "./cards/card";
-import { CardProps } from "@/shared/interface/cards";
+import { CardsProps } from "@/shared/interface/cards";
 import { RegionLink } from "./region-link";
 
-export interface SidebarData {
-  slug?: string;
-  cardsData: CardProps[];
-}
 
 interface Props {
   title: string;
-  data: SidebarData[];
+  data: CardsProps[];
   link: string;
   firstCard?: string;
+  className?: string;
 }
 
-export const NewsFeed: React.FC<Props> = ({ title, link, data, firstCard }) => {
+export const NewsFeed: React.FC<Props> = ({ title, link, data, firstCard, className }) => {
   const [activeTab, setActiveTab] = useState<"new" | "popular">("new");
   return (
-    <div className="news-feed">
+    <div className={`news-feed ${className}`}>
       <div className="news-feed__topBar">
         <h5 className="news-feed__title">{title}</h5>
         <div className="news-feed__navigation">

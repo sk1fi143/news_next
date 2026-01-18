@@ -1,66 +1,32 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
-
-import { Regions } from "@/shared/models/regions";
-import { RegionIcon } from "@cmp/svg/region";
 import { ArrowDown } from "@/shared/components/svg/arrowDown";
-import { Check } from "@/shared/components/svg/check";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import { CardsProps } from "@/shared/interface/cards";
+import { RegionLink } from "../region-link";
+import { Union } from "../../svg/union";
 
-interface IRegion {
-  name: string;
-  logo: string | StaticImport;
-  url: string;
+interface Props {
+  topics: CardsProps[];
+  onItemClick?: () => void;
 }
-
-export const Select = () => {
+export const Select: React.FC<Props> = ({ topics, onItemClick }) => {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
-  const router = useRouter();
+  const [selectedTopic, setSelectedTopic] = useState<CardsProps | null>(null);
 
-const segments = pathname.split("/").filter(Boolean);
-  const firstSegment = segments[0];
-  const selectedRegion = Regions.find((r) => r.url === firstSegment) ?? null;
-
-  const getPathWithoutRegion = () => {
-    const currentSegments = [...segments];
-    if (currentSegments.length && Regions.some((r) => r.url === currentSegments[0])) {
-      currentSegments.shift();
-    }
-    return "/" + currentSegments.join("/");
-  };
-
-  const handleSelect = (region: IRegion | null) => {
+  const handleSelect = (topic: CardsProps) => {
+    setSelectedTopic(topic);
     setOpen(false);
-    const basePath = getPathWithoutRegion();
-
-    // Формируем новый путь
-    const newPath = region 
-      ? `/${region.url}${basePath === "/" ? "" : basePath}`
-      : (basePath === "/" ? "/" : basePath);
-
-    router.push(newPath);
+    onItemClick?.();
   };
 
   return (
     <div className="select">
       <div className="select__visible" onClick={() => setOpen((prev) => !prev)}>
-        {selectedRegion ? (
-          <Image
-            src={selectedRegion.logo}
-            alt={selectedRegion.name}
-            width={24}
-            height={24}
-          />
-        ) : (
-          <RegionIcon />
-        )}
+        <Union />
 
         <span className="select__visible-text">
-          {selectedRegion ? selectedRegion.name : "Все регионы"}
+          {selectedTopic ? selectedTopic.title : "Выбрать категорию"}
         </span>
 
         <div
@@ -77,21 +43,15 @@ const segments = pathname.split("/").filter(Boolean);
 
       {open && (
         <div className="select__hidden">
-          {Regions.map((region) => (
-            <div
-              key={region.url}
+          {topics.map((topic, idx) => (
+            <RegionLink
+              onClick={() => handleSelect(topic)}
               className="select__hidden-item"
-              onClick={() => handleSelect(region)}
+              href={`/news?topic=${topic.slug}`}
+              key={idx}
             >
-              <Image
-                src={region.logo}
-                alt={region.name}
-                width={20}
-                height={20}
-              />
-              <span>{region.name}</span>
-              {selectedRegion?.url === region.url && <Check />}
-            </div>
+              <span className="select__hidden-item-text">{topic.title}</span>
+            </RegionLink>
           ))}
         </div>
       )}

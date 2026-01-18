@@ -1,4 +1,3 @@
-// components/tabs-mobile-navigation.tsx
 "use client";
 
 import React from "react";

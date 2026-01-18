@@ -1,6 +1,5 @@
 import { Metadata } from "next";
-import { Head } from "@/shared/components/shared/head";
-import { DocsLayout } from "@/shared/components/shared/docsLayout";
+import { DocsLayout } from "@/shared/components/pages/docsLayout";
 import { Privacy } from "@/shared/models/documents";
 
 export const metadata: Metadata = {
@@ -10,9 +9,6 @@ export const metadata: Metadata = {
 
 export default function Agreement() {
   return (
-    <main>
-    <Head breadcrumbs title="Пользовательское соглашение" />
-    <DocsLayout data={Privacy}/>
-    </main>
+    <DocsLayout data={Privacy} title="Пользовательское соглашение" />
   );
 }

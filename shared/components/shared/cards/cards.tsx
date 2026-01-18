@@ -14,7 +14,7 @@ export const Cards: React.FC<Props> = ({ data }) => {
     <section className="newsCards">
       <CardsWrapper title={data.title} data={data.cardsData} />
       <div className="newsCards__column">
-        <RegionLink href="/news" className="newsCards__column-button">
+        <RegionLink href={`/news?topic=${data.slug}`} className="newsCards__column-button">
           <span className="newsCards__column-button-text">Все новости по теме</span>
           <ArrowGo className="newsCards__column-button-icon" />
         </RegionLink>

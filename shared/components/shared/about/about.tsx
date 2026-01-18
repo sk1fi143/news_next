@@ -2,10 +2,10 @@
 
 import React from "react";
 import { CardsAboutUs } from "./card-about";
-import { DataCardAbout } from "@/shared/interface/IAbout";
+import { AboutTextBlock } from "@/shared/interface/IAbout";
 
 interface Props {
-  data: DataCardAbout;
+  data: AboutTextBlock;
 }
 
 export const AboutUs: React.FC<Props> = ({ data }) => {

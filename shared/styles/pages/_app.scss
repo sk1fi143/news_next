@@ -1,4 +1,11 @@
 .page {
+
+  &__sticky {
+    display: flex;
+    flex-direction: row;
+    column-gap: 32px;
+    align-items: start;
+  }
   &__top {
     display: flex;
     flex-direction: row;

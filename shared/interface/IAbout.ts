@@ -1,13 +1,18 @@
-export interface SocialItem {
-  name: string;
-  link: string;
-  icon: string;
+
+
+export interface AboutBase {
+  slug: string;
 }
 
-export interface IContact {
+export interface ICardAbout {
   title: string;
-  contact: string;
-  mail: string;
+  text: string;
+}
+
+
+export interface AboutTextBlock extends AboutBase {
+  text: string;
+  cards: ICardAbout[];
 }
 
 export interface IContactInfo {
@@ -21,13 +26,32 @@ export interface IContactInfo {
   address: string;
 }
 
-interface ICardAbout {
-  title: string;
-  text: string;
+export interface AboutContactInfoBlock extends AboutBase {
+  data: IContactInfo;
 }
 
-export interface DataCardAbout {
-  slug: string;
-  text: string;
-  cards: ICardAbout[];
+export interface IContact {
+  title: string;
+  contact: string;
+  mail: string;
 }
+
+export interface AboutContactsBlock extends AboutBase {
+  data: IContact[];
+}
+
+export interface SocialItem {
+  name: string;
+  link: string;
+  icon: string;
+}
+
+export interface AboutSocialsBlock extends AboutBase {
+  data: SocialItem[];
+}
+
+export type AboutDataItem =
+  | AboutTextBlock
+  | AboutContactInfoBlock
+  | AboutContactsBlock
+  | AboutSocialsBlock;

@@ -3,7 +3,7 @@ import { Card } from "./card";
 import { CardProps } from "@/shared/interface/cards";
 
 interface Props {
-  title: string;
+  title?: string;
   data: CardProps[];
   className?: string;
 }

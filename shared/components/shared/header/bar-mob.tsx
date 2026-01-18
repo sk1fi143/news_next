@@ -1,19 +1,47 @@
-import React from 'react';
-import { CardsProps } from '@/shared/interface/cards';
-import { RegionLink } from '../region-link';
+"use client";
 
-interface Props {
-  Topics: CardsProps[];
-  onItemClick?: () => void; 
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import { Regions } from "@/shared/models/regions";
+import { usePathname, useRouter } from 'next/navigation';
+
+interface IRegion {
+  name: string;
+  logo: string | StaticImport;
+  url: string;
 }
 
-export const BarMod: React.FC<Props> = ({ Topics, onItemClick  }) => {
+export const BarMod = () => {
+const pathname = usePathname();
+    const router = useRouter();
+  
+  const segments = pathname.split("/").filter(Boolean);
+    const firstSegment = segments[0];
+    const selectedRegion = Regions.find((r) => r.url === firstSegment) ?? null;
+  
+    const getPathWithoutRegion = () => {
+      const currentSegments = [...segments];
+      if (currentSegments.length && Regions.some((r) => r.url === currentSegments[0])) {
+        currentSegments.shift();
+      }
+      return "/" + currentSegments.join("/");
+    };
+  
+    const handleSelect = (region: IRegion | null) => {
+      const basePath = getPathWithoutRegion();
+  
+      const newPath = region 
+        ? `/${region.url}${basePath === "/" ? "" : basePath}`
+        : (basePath === "/" ? "/" : basePath);
+  
+      router.push(newPath);
+    };
+
   return (
     <div className="topBar-mob">
-      {Topics.map((topic) => (
-        <RegionLink href={`/news/${topic.slug}`} className="topBar-mob__item-mob" key={topic.slug}  onClick={onItemClick}>
-          <span className="topBar-mob__item-text-mob">{topic.title}</span>
-        </RegionLink>
+      {Regions.map((region, idx) => (
+        <div onClick={() => handleSelect(region)} className={`topBar-mob__item-mob ${region.url === selectedRegion?.url ? 'topBar-mob__item-mob-active' : ''}`} key={idx}>
+          <span className="topBar-mob__item-text-mob">{region.name}</span>
+        </div>
       ))}
     </div>
   );

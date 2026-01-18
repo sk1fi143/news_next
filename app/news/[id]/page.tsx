@@ -1,6 +1,6 @@
 import { NewsItemData } from "@/shared/models/newsItemData";
 import { Metadata } from "next";
-import { NewsPage } from "@/shared/components/shared/news/news";
+import { NewsPageLayout } from "@/shared/components/pages/newsPageLayout";
 import { NewsData } from "@/shared/models/newsData";
 
 export const metadata: Metadata = {
@@ -10,6 +10,6 @@ export const metadata: Metadata = {
 
 export default function PageNews() {
   return (
-    <NewsPage data={NewsItemData} newsData={NewsData} />
+    <NewsPageLayout data={NewsItemData} newsData={NewsData} />
   );
 }

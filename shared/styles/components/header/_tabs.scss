@@ -1,9 +1,9 @@
 .tabs {
     display: flex;
     flex-direction: row;
+    column-gap: 36px;
 
     &__item {
-        padding: 16px 20px;
         cursor: pointer;
 
         &-text {
@@ -11,8 +11,9 @@
             font-size: 16px;
             line-height: 20px;
             font-weight: 500;
+            transition: all 0.3s ease-in-out;
 
-            &-active {
+            &-active, &:hover {
                 color: $Primary700;
             }
         }

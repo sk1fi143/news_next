@@ -4,12 +4,13 @@ import { SocialItem } from '@/shared/interface/IAbout';
 import { Vk } from "@cmp/svg/vk";
 import { Tg } from "@cmp/svg/tg";
 import { Odn } from "@cmp/svg/odn"
+import { Max } from "@cmp/svg/max";
 
 interface Props {
   data: SocialItem[];
 }
 
-const ICONS = { Vk, Tg, Odn };
+const ICONS = { Vk, Tg, Odn, Max };
 
 export const Social: React.FC<Props> = ({data}) => {
   return (

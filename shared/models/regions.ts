@@ -2,6 +2,7 @@ import RME from '@icons/mari-el.svg';
 import RT from '@icons/tat.svg';
 import RC from '@icons/chuv.svg';
 import NO from '@icons/nizh.svg';
+import KO from '@icons/kir.svg';
 
 export const Regions = [
     {
@@ -23,6 +24,11 @@ export const Regions = [
         name: 'Нижегородская область',
         url: 'NO',
         logo: NO,
+    },
+    {
+        name: 'Кировская область',
+        url: 'KO',
+        logo: KO,
     }
 ]
 

@@ -1,11 +1,6 @@
 import { Metadata } from "next";
-import { Head } from "@/shared/components/shared/head";
-import { Line } from "@/shared/components/shared/line";
-import Form from "@/shared/components/shared/about/form";
-import { Contact } from "@/shared/components/shared/contact";
-import { ContactInfo } from "@/shared/components/shared/about/contact-info";
 import { AboutData } from "@/shared/models/about";
-import { IContact, IContactInfo, SocialItem } from "@/shared/interface/IAbout";
+import { ContactsLayout } from "@/shared/components/pages/contactsLayout";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,37 +9,6 @@ export const metadata: Metadata = {
 
 export default function Contacts() {
   return (
-    <main>
-    <Head breadcrumbs title="Контакты" />
-      <div className="about__row about__row-contacts">
-        {(() => {
-          const info = AboutData.find(
-            (item) => item.slug === "Контактная информация"
-          )?.data as IContactInfo;
-
-          const soc = AboutData.find(
-            (item) => item.slug === "Социальные сети"
-          )?.data as SocialItem[];
-
-          return info && <ContactInfo soc={soc} {...info} />;
-        })()}
-        <Form />
-      </div>
-      <Line />
-      <div className="about__contacts">
-        {(
-          (AboutData.find((item) => item.slug === "Контакты")?.data ||
-            []) as IContact[]
-        ).map((contact) => (
-          <Contact
-            key={contact.title}
-            title={contact.title}
-            contact={contact.contact}
-            mail={contact.mail}
-            className="about__contacts-item"
-          />
-        ))}
-      </div>
-    </main>
+    <ContactsLayout aboutData={AboutData} />
   );
 }

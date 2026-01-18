@@ -3,8 +3,9 @@
   height: 58px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   flex-direction: row;
+  padding-left: 12px;
 
   &__item {
     padding: 20px;
