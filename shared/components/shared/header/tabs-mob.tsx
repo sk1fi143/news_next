@@ -2,8 +2,8 @@
 
 import React from "react";
 import { usePathname } from "next/navigation";
-import { Pages } from "@/shared/models/tabs";
 import { RegionLink } from "../region-link";
+import { Pages } from "@/shared/models/tabs";
 import { Regions } from "@/shared/models/regions";
 
 interface Props {

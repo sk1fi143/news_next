@@ -30,6 +30,8 @@
 
 @media (max-width: 767px) {
   .tabs-footer {
+    flex-wrap: wrap;
+    row-gap: 8px;
     &__item {
       &-text {
         font-size: 12px;

@@ -1,10 +1,11 @@
-@import "./app";
+@import "./_app";
 @import "./about";
 @import "./notFound";
 @import "./contacts";
 @import "./docs";
 @import './topics';
 
+
 .newsMain {
-  @import "./news";
+    @import './news';
 }

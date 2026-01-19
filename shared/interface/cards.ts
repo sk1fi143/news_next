@@ -14,3 +14,10 @@ export interface CardProps {
   imageUrl: string;
 }
 
+export interface IPromoCards {
+  id: string | number;
+  type: string;
+  title: string;
+  description: string;
+  time: string;
+}

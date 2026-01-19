@@ -16,6 +16,22 @@ interface Props {
 
 export const NewsFeed: React.FC<Props> = ({ title, link, data, firstCard, className }) => {
   const [activeTab, setActiveTab] = useState<"new" | "popular">("new");
+  
+  // Собираем все новости из всех категорий
+  const allNews = data.flatMap(category => 
+    category.cardsData.map(card => ({
+      ...card,
+      categorySlug: category.slug,
+      categoryTitle: category.title
+    }))
+  );
+
+  // Для "Новое" берем первые 3 новости
+  const newNews = allNews.slice(0, 3);
+  
+  // Для "Популярное" берем новости с 3 по 6
+  const popularNews = allNews.slice(3, 6);
+  
   return (
     <div className={`news-feed ${className}`}>
       <div className="news-feed__topBar">
@@ -41,43 +57,33 @@ export const NewsFeed: React.FC<Props> = ({ title, link, data, firstCard, classN
       </div>
       <div className="news-feed__content">
         {activeTab === "new" &&
-          data.map(
-            (cards) =>
-              cards.slug == "vlast" &&
-              cards.cardsData
-                .slice(0, 5)
-                .map((card, index) => (
-                  <Card
-                    key={card.id || index}
-                    id={card.id}
-                    title={card.title}
-                    location={card.location}
-                    time={card.time}
-                    imageUrl={card.imageUrl}
-                    className={`newsCard ${index === 0 ? `${firstCard}` : 'newsCard-S'}`}
-                  />
-                ))
-          )}
+          newNews.map((card, index) => (
+            <Card
+              key={card.id || index}
+              id={card.id}
+              title={card.title}
+              location={card.location}
+              time={card.time}
+              imageUrl={card.imageUrl}
+              className={`newsCard ${index === 0 ? `${firstCard}` : 'newsCard-S'}`}
+            />
+          ))
+        }
         {activeTab === "popular" &&
-          data.map(
-            (cards) =>
-              cards.slug == "politika" &&
-              cards.cardsData
-                .slice(0, 5)
-                .map((card, index) => (
-                  <Card
-                    key={card.id || index}
-                    id={card.id}
-                    title={card.title}
-                    location={card.location}
-                    time={card.time}
-                    imageUrl={card.imageUrl}
-                    className={`newsCard ${index === 0 ? `${firstCard}` : 'newsCard-S'}`}
-                  />
-                ))
-          )}
+          popularNews.map((card, index) => (
+            <Card
+              key={card.id || index}
+              id={card.id}
+              title={card.title}
+              location={card.location}
+              time={card.time}
+              imageUrl={card.imageUrl}
+              className={`newsCard ${index === 0 ? `${firstCard}` : 'newsCard-S'}`}
+            />
+          ))
+        }
       </div>
-      <RegionLink href={link} className="news-feed__button">
+      <RegionLink href={`/${link}`} className="news-feed__button">
         Смотреть все
       </RegionLink>
     </div>

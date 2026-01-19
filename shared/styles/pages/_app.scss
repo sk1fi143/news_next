@@ -1,5 +1,4 @@
 .page {
-
   &__sticky {
     display: flex;
     flex-direction: row;
@@ -22,6 +21,25 @@
     width: 100%;
     row-gap: 40px;
     margin-left: auto;
+
+    &-buttonMore {
+      background: $Neutral200;
+      border-radius: 40px;
+      padding: 16px;
+      width: 100%;
+      color: $Neutral700;
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease-in-out;
+      margin-top: -16px;
+
+      &:hover {
+        background: $Neutral300;
+      }
+    }
   }
 }
 
@@ -74,7 +92,12 @@
     &__column {
       max-width: 100%;
       width: 100%;
-      row-gap: 40px;
+      row-gap: 32px;
+
+      &-buttonMore {
+        margin-top: 12px;
+        margin-bottom: 24px;
+      }
     }
   }
 }

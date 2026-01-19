@@ -5,6 +5,7 @@ import { Head } from "../shared/head";
 import { Card } from "../shared/cards/card";
 import React from "react";
 import { useSearchParams } from "next/navigation";
+import { RegionLink } from "../shared/region-link";
 
 interface Props {
   data: CardsProps;
@@ -13,7 +14,7 @@ interface Props {
 export const SearchLayout: React.FC<Props> = ({ data }) => {
   const PAGE_SIZE = 16;
   const searchParams = useSearchParams();
-  
+
   const [isMounted, setIsMounted] = React.useState(false);
   const [windowWidth, setWindowWidth] = React.useState(0);
   const [sections, setSections] = React.useState<number[][]>([]);
@@ -32,7 +33,7 @@ export const SearchLayout: React.FC<Props> = ({ data }) => {
 
     const pageParam = searchParams.get("page");
     const initialPage = pageParam ? parseInt(pageParam, 10) - 1 : 0;
-    
+
     const initialSections = [
       data.cardsData
         .slice(initialPage * PAGE_SIZE, (initialPage + 1) * PAGE_SIZE)
@@ -74,9 +75,11 @@ export const SearchLayout: React.FC<Props> = ({ data }) => {
 
     return slicedIndices.map((cardIdx, index) => {
       const className =
-        windowWidth > 1200 
-          ? "newsCard-M" 
-          : specialPositions.includes(index) ? "newsCard-L" : "newsCard-M";
+        windowWidth > 1200
+          ? "newsCard-M"
+          : specialPositions.includes(index)
+            ? "newsCard-L"
+            : "newsCard-M";
 
       const cardData = data.cardsData[cardIdx];
       if (!cardData) return null;
@@ -86,30 +89,50 @@ export const SearchLayout: React.FC<Props> = ({ data }) => {
   };
 
   if (!isMounted) {
-    return null; 
+    return null;
   }
+
+  const isDataEmpty = data.cardsData.length === 0;
 
   return (
     <main>
-      <Head breadcrumbs title="Результаты поиска" />
+      {isDataEmpty ? (
+        <div className="notFound">
+          <span className="notFound__error">404</span>
+          <h1 className="notFound__title">Ничего не найдено</h1>
+          <p className="notFound__decription">
+            Возможно, вы ввели неверный запрос. <br />
+            Вы можете вернуться на{" "}
+            <RegionLink href="/" className="notFound__decription-primary">
+              главную страницу сайта.
+            </RegionLink>
+          </p>
+          <RegionLink href="/" className="notFound__button">
+            Вернуться на главную
+          </RegionLink>
+        </div>
+      ) : (
+        <>
+          <Head breadcrumbs title="Результаты поиска" />
+          <div className="newsTopics">
+            {sections.map((sectionIndices, index) => (
+              <section key={index} className="newsTopics__section">
+                {renderCardsForSection(sectionIndices)}
+              </section>
+            ))}
 
-      <div className="newsTopics">
-        {sections.map((sectionIndices, index) => (
-          <section key={index} className="newsTopics__section">
-            {renderCardsForSection(sectionIndices)}
-          </section>
-        ))}
-
-        {sections.length < totalPages && (
-          <button
-            onClick={handleShowMore}
-            type="button"
-            className="newsTopics__button"
-          >
-            Показать ещё
-          </button>
-        )}
-      </div>
+            {sections.length < totalPages && (
+              <button
+                onClick={handleShowMore}
+                type="button"
+                className="newsTopics__button"
+              >
+                Показать ещё
+              </button>
+            )}
+          </div>
+        </>
+      )}
     </main>
   );
 };

@@ -1,37 +1,29 @@
-import RME from '@icons/mari-el.svg';
-import RT from '@icons/tat.svg';
-import RC from '@icons/chuv.svg';
-import NO from '@icons/nizh.svg';
-import KO from '@icons/kir.svg';
-
 export const Regions = [
     {
+        name: 'Все регионы',
+        url: '',
+    },
+    {
         name: 'Республика Марий Эл',
-        url: 'RME',
-        logo: RME,
+        url: 'mari_el',
     },
     {
         name: 'Республика Татарстан',
-        url: 'RT',
-        logo: RT,
+        url: 'tatarstan',
     },
     {
         name: 'Республика Чувашия',
-        url: 'RC',
-        logo: RC,
+        url: 'chuvash',
     },
     {
         name: 'Нижегородская область',
-        url: 'NO',
-        logo: NO,
+        url: 'nizhny_novgorod',
     },
     {
         name: 'Кировская область',
-        url: 'KO',
-        logo: KO,
+        url: 'kirov',
     }
 ]
 
 export type Region = typeof Regions[number];
 export type RegionCode = Region['url'];
-export const REGIONS_CODES = Regions.map((r) => r.url);

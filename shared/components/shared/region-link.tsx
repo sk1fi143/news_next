@@ -2,19 +2,23 @@
 
 import Link, { LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
-import { REGIONS_CODES } from "@models/regions";
+import { REGIONS_CODES, RegionCode } from "@models/regionCodes";
 
 type Props = LinkProps & {
   children: React.ReactNode;
   className?: string;
 };
 
+function isRegionCode(code: string): code is RegionCode {
+  return REGIONS_CODES.includes(code as RegionCode);
+}
+
 export const RegionLink = ({ className ,href, children, ...props }: Props) => {
   const pathname = usePathname();
 
   const segments = pathname.split("/").filter(Boolean);
   const currentRegion =
-    segments.length && REGIONS_CODES.includes(segments[0])
+    segments.length && isRegionCode(segments[0])
       ? segments[0]
       : null;
 
@@ -24,7 +28,7 @@ export const RegionLink = ({ className ,href, children, ...props }: Props) => {
       : href;
 
   return (
-    <Link className={className} href={finalHref} {...props}>
+    <Link rel="canonical" className={className} href={finalHref} {...props}>
       {children}
     </Link>
   );

@@ -12,14 +12,14 @@ interface Props {
 export const Cards: React.FC<Props> = ({ data }) => {
   return (
     <section className="newsCards">
-      <CardsWrapper title={data.title} data={data.cardsData} />
+      <CardsWrapper title={data.title} data={data} />
       <div className="newsCards__column">
         <RegionLink href={`/news?topic=${data.slug}`} className="newsCards__column-button">
           <span className="newsCards__column-button-text">Все новости по теме</span>
           <ArrowGo className="newsCards__column-button-icon" />
         </RegionLink>
         <div className="newsCards__column-cards">
-          {data.cardsData.slice(0, 2).map((card) => (
+          {data.cardsData.slice(3, 5).map((card) => (
             <Card className="newsCard-M" key={card.id} {...card} />
           ))}
         </div>

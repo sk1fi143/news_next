@@ -1,10 +1,10 @@
 import React from "react";
 import { Card } from "./card";
-import { CardProps } from "@/shared/interface/cards";
+import { CardsProps } from "@/shared/interface/cards";
 
 interface Props {
   title?: string;
-  data: CardProps[];
+  data: CardsProps;
   className?: string;
 }
 
@@ -13,9 +13,8 @@ export const CardsWrapper: React.FC<Props> = ({ className, title, data }) => {
     <div className="cards-wrapper">
       <h2 className={`cards-wrapper__title ${className}`}>{title}</h2>
       <div className="cards-wrapper__cards">
-        {data.slice(0, 3).map((card, index) => {
+        {data.cardsData?.slice(0, 3).map((card, index) => {
           const sizeClass = index === 0 ? "newsCard-L" : "newsCard-M";
-
           return (
             <Card
               key={card.id}

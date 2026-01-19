@@ -12,7 +12,7 @@ id: string | number;
 
 export const PromoCard: React.FC<Props> = ({ className, type, title, description, time, id }) => {
   return (
-    <RegionLink href={`/news/${id}`} className={className}>
+    <RegionLink href={`/articles/${id}`} className={className}>
         <div className={`promoCard__type`}>
             <span className={`promoCard__type-text`}>{type}</span>
         </div>

@@ -1,14 +1,17 @@
 import React from "react";
 import { PromoCard } from "./card";
-import { PromoCardData } from "./promoCard";
+import { IPromoCards } from "@/shared/interface/cards";
 
+interface Props {
+  promoData: IPromoCards[];
+}
 
-export const PromoCards: React.FC = () => {
+export const PromoCards: React.FC<Props> = ({ promoData }) => {
   const colorModifiers = ["-primary", "-secondary", "-neutral"];
 
   return (
     <section className="promoCards">
-      {PromoCardData.slice(0, 3).map((card, index) => {
+      {promoData.slice(0, 3).map((card, index) => {
         const sizeClass = index === 0 ? "promoCard-L" : "promoCard-S";
         const colorClass = `promoCard${colorModifiers[index] || "-neutral"}`;
 

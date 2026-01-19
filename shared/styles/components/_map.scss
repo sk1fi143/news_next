@@ -34,7 +34,8 @@
     &__nijni,
     &__mari,
     &__tat,
-    &__chuvash {
+    &__chuvash,
+    &__kirov {
         position: absolute;
     }
 
@@ -55,16 +56,16 @@
 
     &__mari {
         transform: translate(-50%, 0%);
-        left: calc(18.4% + 155.5px);
+        left: calc(18.4% - 115.5px);
         bottom: 44.78%;
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: row;
         align-items: center;
     }
 
     &__mari-line {
         height: 2px;
-        width: 40px;
+        width: 25px;
         background-color: $Primary700;
     }
 
@@ -77,6 +78,20 @@
     }
     
     &__tat-line {
+        height: 2px;
+        width: 80px;
+        background-color: $Primary700;
+    }
+
+    &__kirov {
+        top: 47%;
+        left: 21.05%;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+
+    &__kirov-line {
         height: 2px;
         width: 80px;
         background-color: $Primary700;
@@ -155,6 +170,10 @@
 }
 
 @media (max-width: 1439px) and (min-width: 1401px) {
+    .map {
+        overflow: inherit;
+    }
+
     .map__nijni {
         transform: translate(-50%, 0%);
         bottom: 50%;
@@ -163,7 +182,7 @@
 
     .map__mari {
         transform: translate(-50%, -50%);
-        left: calc(18.4% + 155.5px);
+        left: calc(18.4% - 115.5px);
         top: calc(49.75% + 17px);
     }
 
@@ -181,6 +200,10 @@
 }
 
 @media (max-width: 1400px) and (min-width: 1200px) {
+    .map__main-info {
+        scale: 0.9;
+    }
+
     .map__nijni {
         transform: translate(-50%, 0%);
         bottom: 50%;
@@ -189,7 +212,7 @@
 
     .map__mari {
         transform: translate(-50%, 0%);
-        left: calc(18.4% + 155.5px);
+        left: calc(18.4% - 115.5px);
         bottom: 45.78%;
     }
 
@@ -204,13 +227,23 @@
         left: calc(20.4% + 153px);
         top: calc(53.59%);
     }
+
+    .map__kirov {
+        transform: translate(-50%, 0%);
+        left: calc(20.4% + 157px);
+        top: calc(45.59%);
+    }
 }
 
 @media (max-width: 1199px) and (min-width: 768px) {
+    .map__main-info {
+        scale: 0.9;
+    }
+
     .map {
-&__title {
-    max-width: 400px;
-}
+        &__title {
+            max-width: 400px;
+        }
 
         &__nijni {
             top: 282.5px;
@@ -218,9 +251,15 @@
             transform: translate(0%, 0%);
         }
 
+        &__kirov {
+            top: 356.5px;
+            left: 281.65px;
+            transform: translate(0%, 0%);
+        }
+
         &__mari {
-            top: 371.5px;
-            left: 253.65px;
+            top: 369.5px;
+            left: -3.65px;
             transform: translate(0%, 0%);
         }
 
@@ -283,7 +322,8 @@
     .map__nijnii-line,
     .map__mari-line,
     .map__tat-line,
-    .map__chuvash-line {
+    .map__chuvash-line,
+    .map__kirov-line {
         display: none;
     }
 
@@ -295,7 +335,8 @@
         &__nijni,
         &__mari,
         &__tat,
-        &__chuvash {
+        &__chuvash,
+        &__kirov {
             position: relative;
             top: 0px;
             bottom: 0px;

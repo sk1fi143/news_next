@@ -3,7 +3,6 @@ import { INewsItem } from "@/shared/interface/INews";
 import { Head } from "../shared/head";
 import { NewsFeed } from "../shared/news-feed";
 import Image from "next/image";
-import TestImage from "@img/card.png";
 import { Fragment } from "react/jsx-runtime";
 import { Socials } from "../shared/socials";
 import { AboutData } from "@/shared/models/about";
@@ -48,8 +47,10 @@ export const NewsPageLayout: React.FC<Props> = ({ data, newsData }) => {
                 {item.image && item.imageUrl && (
                   <figure className="news-image">
                     <Image
-                      src={TestImage}
+                      src={item.imageUrl}
                       alt={item.imageDescription || "Описание изображения"}
+                      width={800}
+                      height={600}
                     />
                     {item.imageDescription && (
                       <figcaption>{item.imageDescription}</figcaption>

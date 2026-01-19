@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Card } from "./cards/card";
 import Image from "next/image";
-import MapImage from "@img/map.png";
+import MapImage from "@img/map.svg";
 import { MapRegions } from "@/shared/models/map";
 import { CardsProps } from "@/shared/interface/cards";
 import { RegionLink } from "./region-link";
@@ -17,9 +17,9 @@ export const Map: React.FC<Props> = ({ data }) => {
 
   const currentRegion = MapRegions.find((r) => r.id === activeRegion);
 
-  const filteredCards = data
-    .filter((item) => item.region === currentRegion?.name)
-    .flatMap((item) => item.cardsData);
+  const filteredCards = data.flatMap((category) => 
+    category.cardsData.filter((card) => card.location === currentRegion?.location)
+  );
 
   const handleRegionClick = (region: string) => {
     setActiveRegion(region);

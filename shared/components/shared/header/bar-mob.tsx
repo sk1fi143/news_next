@@ -11,30 +11,17 @@ interface IRegion {
 }
 
 export const BarMod = () => {
-const pathname = usePathname();
-    const router = useRouter();
+  const pathname = usePathname();
+  const router = useRouter();
   
   const segments = pathname.split("/").filter(Boolean);
-    const firstSegment = segments[0];
-    const selectedRegion = Regions.find((r) => r.url === firstSegment) ?? null;
+  const firstSegment = segments[0];
+  const selectedRegion = Regions.find((r) => r.url === firstSegment) ?? null;
   
-    const getPathWithoutRegion = () => {
-      const currentSegments = [...segments];
-      if (currentSegments.length && Regions.some((r) => r.url === currentSegments[0])) {
-        currentSegments.shift();
-      }
-      return "/" + currentSegments.join("/");
-    };
-  
-    const handleSelect = (region: IRegion | null) => {
-      const basePath = getPathWithoutRegion();
-  
-      const newPath = region 
-        ? `/${region.url}${basePath === "/" ? "" : basePath}`
-        : (basePath === "/" ? "/" : basePath);
-  
-      router.push(newPath);
-    };
+  const handleSelect = (region: IRegion) => {
+    // Всегда переходим на главную страницу выбранного региона
+    router.push(`/${region.url}`);
+  };
 
   return (
     <div className="topBar-mob">

@@ -2,8 +2,8 @@
 
 import { usePathname } from "next/navigation";
 import { BreadcrumbsMap } from "@/shared/models/breadcrumbsMap";
-import { RegionLink } from "./region-link";
 import { Regions } from "@/shared/models/regions";
+import { RegionLink } from "./region-link";
 
 type BreadcrumbsProps = {
   slug?: string;

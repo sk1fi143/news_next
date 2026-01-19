@@ -15,6 +15,8 @@ import { BarMod } from "./bar-mob";
 import { TabsMob } from "./tabs-mob";
 import { Close } from "../../svg/close";
 import { TabsMobileNavigation } from "./tabs-burger";
+import { Pages } from "@/shared/models/tabs";
+import { Regions } from "@/shared/models/regions";
 
 interface Props {
   data: CardsProps[];
