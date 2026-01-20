@@ -44,6 +44,7 @@ export const Search: React.FC<SearchProps> = ({ isOpen, onOpen, onClose }) => {
     <div className={`search ${isOpen ? "search__full-width" : ""}`} ref={containerRef}>
       {/* Используем form, чтобы Enter на мобильных срабатывал */}
       <form
+      action="."
         className={`search__container ${isOpen ? "open" : ""}`}
         onClick={!isOpen ? onOpen : undefined}
         onSubmit={(e) => {
