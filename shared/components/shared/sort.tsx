@@ -15,6 +15,7 @@ interface IRegion {
 export const Sort = () => {
   const [open, setOpen] = React.useState(false);
   const [selectedFilter, setSelectedFilter] = React.useState<IRegion | null>(null);
+  const wrapperRef = React.useRef<HTMLDivElement | null>(null);
   
   const router = useRouter();
   const pathname = usePathname();
@@ -37,8 +38,21 @@ export const Sort = () => {
     { name: 'По рейтингу', url: 'rating' }
   ];
 
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="select main-sort">
+    <div className="select main-sort" ref={wrapperRef}>
       <div className="select__visible sort" onClick={() => setOpen(!open)}>
         <Sorting />
         <span className="select__visible-text">

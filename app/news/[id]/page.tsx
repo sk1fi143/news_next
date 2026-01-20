@@ -5,6 +5,7 @@ import { NewsData } from "@/shared/models/newsData";
 import { notFound } from "next/navigation";
 import { generateNewsArticleSchema } from "@/shared/lib/schema";
 import { JsonLd } from "@/shared/components/schema/json-ld";
+import { buildPageMetadata } from "@/shared/lib/seo";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -13,11 +14,28 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { id } = await params;
   const newsItem = getNewsItemById(id);
-  
-  return {
+
+  if (!newsItem) {
+    return buildPageMetadata(`/news/${id}`, {
+      title: "Новость не найдена",
+      description: "Запрошенная новость не найдена",
+      type: "article",
+    });
+  }
+
+  const firstImage = newsItem.content.find((item) => item.image && item.imageUrl);
+  const imageUrl = firstImage?.imageUrl || "";
+  const firstText = newsItem.content.find((item) => item.text);
+  const description =
+    firstText?.text?.split("\n").find((p) => p.trim())?.trim().substring(0, 160) ||
+    newsItem.title;
+
+  return buildPageMetadata(`/news/${id}`, {
     title: newsItem.title,
-    description: newsItem.title,
-  };
+    description,
+    image: imageUrl,
+    type: "article",
+  });
 }
 
 export default async function PageNews({ params }: PageProps) {

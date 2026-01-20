@@ -7,11 +7,17 @@ import { NewsData } from "@/shared/models/newsData";
 import { generateWebSiteSchema, generateOrganizationSchema } from "@/shared/lib/schema";
 import { JsonLd } from "@/shared/components/schema/json-ld";
 import { AboutData } from "@/shared/models/about";
+import { buildPageMetadata, getSiteUrl } from "@/shared/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Новая Версия Приволжье - Новости регионов",
-  description: "Актуальные новости и статьи регионов Приволжья: Марий Эл, Татарстан, Чувашия, Нижегородская область, Кировская область",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata("/", {
+    title: "Новая Версия Приволжье - Новости регионов",
+    description:
+      "Актуальные новости и статьи регионов Приволжья: Марий Эл, Татарстан, Чувашия, Нижегородская область, Кировская область",
+    image: "/images/card.png",
+    type: "website",
+  });
+}
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +26,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://your-site.com";
+  const siteUrl = getSiteUrl();
   
   // Получаем информацию об организации из AboutData
   const contactInfo = AboutData.find(item => item.slug === "Контактная информация")?.data as any;

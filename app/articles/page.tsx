@@ -7,11 +7,40 @@ import { notFound } from "next/navigation";
 import { regionDataMap } from "../page";
 import { generateBreadcrumbListSchema, generateItemListSchema } from "@/shared/lib/schema";
 import { JsonLd } from "@/shared/components/schema/json-ld";
+import { buildPageMetadata } from "@/shared/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Статьи - Новая Версия Приволжье",
-  description: "Все статьи регионов Приволжья",
-};
+// Пример серверного запроса (оставлено закомментированным):
+// const articlesList = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/articles`, { next: { revalidate: 60 } })
+//   .then(res => res.json());
+// и передать в MainLayout вместо локального NewsData/regionDataMap
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ topic?: string; region?: string }>;
+}): Promise<Metadata> {
+  const params = await searchParams;
+  const query = new URLSearchParams();
+
+  if (params.topic) query.set("topic", params.topic);
+  if (params.region) query.set("region", params.region);
+
+  const path = query.toString() ? `/articles?${query.toString()}` : "/articles";
+
+  const title = params.topic
+    ? `Статьи: ${params.topic}`
+    : "Статьи - Новая Версия Приволжье";
+  const description = params.topic
+    ? `Статьи по теме «${params.topic}»`
+    : "Все статьи регионов Приволжья";
+
+  return buildPageMetadata(path, {
+    title,
+    description,
+    image: "/images/card.png",
+    type: "website",
+  });
+}
 
 export const dynamic = "force-dynamic";
 

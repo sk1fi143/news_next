@@ -9,11 +9,21 @@ import { MainLayout } from "@/shared/components/pages/mainLayout";
 import { generateItemListSchema } from "@/shared/lib/schema";
 import { JsonLd } from "@/shared/components/schema/json-ld";
 import { generateBreadcrumbListSchema } from "@/shared/lib/schema";
+import { buildPageMetadata } from "@/shared/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Новая Версия Приволжье",
-  description: "Новости регионов Приволжья",
-};
+// Пример получения данных с бэкенда (оставлено закомментированным):
+// const homeData = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`, { next: { revalidate: 60 } })
+//   .then(res => res.json());
+// и далее использовать вместо локальных NewsData/regionDataMap
+
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata("/", {
+    title: "Новая Версия Приволжье",
+    description: "Новости регионов Приволжья",
+    image: "/images/card.png",
+    type: "website",
+  });
+}
 
 interface PageProps {
   searchParams: Promise<{ region?: string }>;

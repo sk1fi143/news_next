@@ -2,11 +2,30 @@ import { NewsData } from "@/shared/models/newsData";
 import { Metadata } from "next";
 import { SearchLayout } from "@/shared/components/pages/searchLayout";
 import { Suspense } from "react";
+import { buildPageMetadata } from "@/shared/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Результаты поиска",
-  description: "Поиск новостей по ключевым словам",
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}): Promise<Metadata> {
+  const params = await searchParams;
+  const query =
+    typeof params.q === "string" ? params.q.toLowerCase().trim() : "";
+
+  const path = query ? `/search?q=${encodeURIComponent(query)}` : "/search";
+  const title = query ? `Результаты поиска: ${query}` : "Результаты поиска";
+  const description = query
+    ? `Новости по запросу «${query}»`
+    : "Поиск новостей по ключевым словам";
+
+  return buildPageMetadata(path, {
+    title,
+    description,
+    image: "/images/card.png",
+    type: "website",
+  });
+}
 
 interface SearchPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
