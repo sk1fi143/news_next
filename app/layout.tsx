@@ -53,7 +53,7 @@ export default function RootLayout({
   return (
     <html lang="ru" suppressHydrationWarning>
       <head>
-        <meta name="format-detection" content="telephone=no" />
+        <meta name="format-detection" content="telephone=no" maximum-scale="1"/>
         <JsonLd data={webSiteSchema} />
         <JsonLd data={organizationSchema} />
       </head>

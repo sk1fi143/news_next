@@ -1,6 +1,5 @@
 "use client";
 
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import { Regions } from "@/shared/models/regions";
 import { usePathname, useRouter } from 'next/navigation';
 
@@ -9,7 +8,11 @@ interface IRegion {
   url: string;
 }
 
-export const BarMod = () => {
+interface Props {
+   onItemClick?: () => void; 
+}
+
+export const BarMod: React.FC<Props> = ({ onItemClick }) => {
   const pathname = usePathname();
   const router = useRouter();
   
@@ -18,6 +21,7 @@ export const BarMod = () => {
   const selectedRegion = Regions.find((r) => r.url === firstSegment) ?? null;
   
   const handleSelect = (region: IRegion) => {
+    onItemClick?.();
     // Всегда переходим на главную страницу выбранного региона
     router.push(`/${region.url}`);
   };

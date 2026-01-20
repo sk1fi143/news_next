@@ -1,36 +1,339 @@
 @use "../libs/variables" as *;
 
 .map {
+  display: flex;
+  flex-direction: column;
+  max-width: 1376px;
+  width: 100%;
+  margin: 0px auto;
+  overflow: hidden;
+
+  &__title {
+    font-size: 40px;
+    line-height: 44px;
+    color: $Neutral700;
+  }
+
+  &__take {
+    font-weight: 400;
+    font-size: 16px;
+    color: $Neutral700;
+    margin-top: 16px;
+  }
+
+  &__main-info {
+    position: relative;
+    width: 100%;
+    max-height: 762px;
+
+    &-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__nijni,
+  &__mari,
+  &__tat,
+  &__chuvash,
+  &__kirov {
+    position: absolute;
+  }
+
+  &__nijni {
+    transform: translate(-50%, 0%);
+    bottom: 49%;
+    left: 17%;
     display: flex;
     flex-direction: column;
-    max-width: 1376px;
-    width: 100%;
-    margin: 0px auto;
-    overflow: hidden;
+    align-items: center;
+  }
 
+  &__nijnii-line {
+    height: 40px;
+    width: 2px;
+    background-color: $Primary700;
+  }
+
+  &__mari {
+    transform: translate(-50%, 0%);
+    left: calc(18.4% - 115.5px);
+    bottom: 44.78%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__mari-line {
+    height: 2px;
+    width: 25px;
+    background-color: $Primary700;
+  }
+
+  &__tat {
+    top: 55.65%;
+    left: 20.45%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  &__tat-line {
+    height: 2px;
+    width: 80px;
+    background-color: $Primary700;
+  }
+
+  &__kirov {
+    top: 47%;
+    left: 21.05%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  &__kirov-line {
+    height: 2px;
+    width: 80px;
+    background-color: $Primary700;
+  }
+
+  &__chuvash {
+    top: 52.76%;
+    left: 9.56%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  &__chuvash-line {
+    height: 40px;
+    width: 2px;
+    background-color: $Primary700;
+  }
+
+  &__card-content {
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+    padding: 8px 16px;
+    background-color: $white;
+    border: 1px solid $Neutral300;
+    border-radius: 17px;
+    cursor: pointer;
+  }
+
+  &-active {
+    background-color: $Primary700;
+  }
+
+  &__circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid $Primary700;
+    background-color: #fff;
+  }
+
+  &__region {
+    font-size: 24px;
+    color: $Neutral700;
+  }
+
+  &__news-list {
+    display: flex;
+    flex-direction: row;
+    margin-top: 32px;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__result {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__button-link {
+    padding: 16px 20px;
+    background-color: $Neutral500;
+    border-radius: 26px;
+    color: $white;
+    font-size: 16px;
+    margin: 20px auto 0px auto;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: $Primary700;
+      color: $Neutral700;
+    }
+  }
+}
+
+@media (max-width: 1439px) and (min-width: 1401px) {
+  .map {
+    overflow: inherit;
+  }
+
+  .map__nijni {
+    transform: translate(-50%, 0%);
+    bottom: 50%;
+    left: 17%;
+  }
+
+  .map__mari {
+    transform: translate(-50%, -50%);
+    left: calc(18.4% - 115.5px);
+    top: calc(49.75% + 17px);
+  }
+
+  .map__chuvash {
+    transform: translate(-50%, 0%);
+    left: calc(10.06% + 103px);
+    top: calc(51.76%);
+  }
+
+  .map__tat {
+    transform: translate(-50%, 0%);
+    left: calc(21.4% + 153px);
+    top: calc(54.59%);
+  }
+}
+
+@media (max-width: 1400px) and (min-width: 1200px) {
+  .map__main-info {
+    scale: 0.9;
+  }
+
+  .map__nijni {
+    transform: translate(-50%, 0%);
+    bottom: 50%;
+    left: 17%;
+  }
+
+  .map__mari {
+    transform: translate(-50%, 0%);
+    left: calc(18.4% - 115.5px);
+    bottom: 45.78%;
+  }
+
+  .map__chuvash {
+    transform: translate(-50%, 0%);
+    left: calc(17.67%);
+    top: calc(51.16%);
+  }
+
+  .map__tat {
+    transform: translate(-50%, 0%);
+    left: calc(20.4% + 153px);
+    top: calc(53.59%);
+  }
+
+  .map__kirov {
+    transform: translate(-50%, 0%);
+    left: calc(20.4% + 157px);
+    top: calc(45.59%);
+  }
+}
+
+@media (max-width: 1199px) and (min-width: 768px) {
+  .map__main-info {
+    scale: 0.9;
+  }
+
+  .map {
     &__title {
-        font-size: 40px;
-        line-height: 44px;
-        color: $Neutral700;
+      max-width: 400px;
     }
 
-    &__take {
-        font-weight: 400;
-        font-size: 16px;
-        color: $Neutral700;
-        margin-top: 16px;
+    &__nijni {
+      top: 282.5px;
+      left: 121.65px;
+      transform: translate(0%, 0%);
+    }
+
+    &__kirov {
+      top: 356.5px;
+      left: 281.65px;
+      transform: translate(0%, 0%);
+    }
+
+    &__mari {
+      top: 369.5px;
+      left: -3.65px;
+      transform: translate(0%, 0%);
+    }
+
+    &__tat {
+      top: 416.5px;
+      left: 267.65px;
+      transform: translate(0%, 0%);
+    }
+
+    &__chuvash {
+      top: 397.5px;
+      left: 121.65px;
+      transform: translate(0%, 0%);
+    }
+
+    &__main-info-img {
+      object-fit: none;
+      object-position: left top;
     }
 
     &__main-info {
-        position: relative;
-        width: 100%;
-        max-height: 762px;
+      height: 762px;
+      width: 1200px;
+    }
 
-        &-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+    &__news-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 8px 16px;
+
+      .newsCard {
+        width: 100%;
+      }
+    }
+
+    &__button-link {
+      padding: 8px 16px;
+      margin-right: auto;
+      margin-left: 0;
+      margin-top: 24px;
+      font-size: 14px;
+    }
+  }
+
+  .map .newsCard {
+    border-bottom: 1px solid $Neutral300;
+    padding-bottom: 8px;
+  }
+
+  .map .newsCard__description-title {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+@media (max-width: 767px) {
+  .map__circle {
+    display: none;
+  }
+
+  .map__nijnii-line,
+  .map__mari-line,
+  .map__tat-line,
+  .map__chuvash-line,
+  .map__kirov-line {
+    display: none;
+  }
+
+  .map {
+    &__title {
+      font-size: 30px;
     }
 
     &__nijni,
@@ -38,362 +341,61 @@
     &__tat,
     &__chuvash,
     &__kirov {
-        position: absolute;
+      position: relative;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      transform: translate(0%);
+      width: auto;
+      flex-direction: row;
     }
 
-    &__nijni {
-        transform: translate(-50%, 0%);
-        bottom: 49%;
-        left: 17%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    &__main-info {
+      flex-direction: column;
+      display: flex;
     }
 
-    &__nijnii-line {
-        height: 40px;
-        width: 2px;
-        background-color: $Primary700;
+    &__category {
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+      order: 1;
+      margin-top: 16px;
     }
 
-    &__mari {
-        transform: translate(-50%, 0%);
-        left: calc(18.4% - 115.5px);
-        bottom: 44.78%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+    &__cover-img {
+      order: 2;
+      height: 544px;
+      width: 100%;
+      overflow: hidden;
     }
 
-    &__mari-line {
-        height: 2px;
-        width: 25px;
-        background-color: $Primary700;
-    }
-
-    &__tat {
-        top: 55.65%;
-        left: 20.45%;
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
-    }
-    
-    &__tat-line {
-        height: 2px;
-        width: 80px;
-        background-color: $Primary700;
-    }
-
-    &__kirov {
-        top: 47%;
-        left: 21.05%;
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
-    }
-
-    &__kirov-line {
-        height: 2px;
-        width: 80px;
-        background-color: $Primary700;
-    }
-
-    &__chuvash {
-        top: 52.76%;
-        left: 9.56%;
-        display: flex;
-        flex-direction: column-reverse;
-        align-items: center;
-    }
-
-    &__chuvash-line {
-        height: 40px;
-        width: 2px;
-        background-color: $Primary700;
-    }
-    
-    &__card-content {
-        display: flex;
-        flex-direction: row;
-        column-gap: 8px;
-        padding: 8px 16px;
-        background-color: $white;
-        border: 1px solid $Neutral300;
-        border-radius: 17px;
-        cursor: pointer;
-    }
-
-    &-active {
-        background-color: $Primary700;
-    }
-
-    &__circle {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        border: 1px solid $Primary700;
-        background-color: #fff;
-    }
-
-    &__region {
-        font-size: 24px;
-        color: $Neutral700;
+    &__main-info-img {
+      object-fit: cover;
+      width: 100%;
+      height: 150%;
+      object-position:  -120px -100px;
     }
 
     &__news-list {
-        display: flex;
-        flex-direction: row;
-        margin-top: 32px;
-        justify-content: space-between;
-        width: 100%;
-    }
-    
-    &__result {
-        display: flex;
-        flex-direction: column;
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+      width: 100%;
     }
 
     &__button-link {
-        padding: 16px 20px;
-        background-color: $Neutral500;
-        border-radius: 26px;
-        color: $white;
-        font-size: 16px;
-        margin: 20px auto 0px auto;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-
-        &:hover {
-            background-color: $Primary700;
-            color: $Neutral700;
-        }
+      padding: 8px 16px;
+      margin-right: auto;
+      margin-left: 0;
+      margin-top: 24px;
+      font-size: 14px;
     }
-}
-
-@media (max-width: 1439px) and (min-width: 1401px) {
-    .map {
-        overflow: inherit;
-    }
-
-    .map__nijni {
-        transform: translate(-50%, 0%);
-        bottom: 50%;
-        left: 17%;
-    }
-
-    .map__mari {
-        transform: translate(-50%, -50%);
-        left: calc(18.4% - 115.5px);
-        top: calc(49.75% + 17px);
-    }
-
-    .map__chuvash {
-        transform: translate(-50%, 0%);
-        left: calc(10.06% + 103px);
-        top: calc(51.76%);
-    }
-
-    .map__tat {
-        transform: translate(-50%, 0%);
-        left: calc(21.4% + 153px);
-        top: calc(54.59%);
-    }
-}
-
-@media (max-width: 1400px) and (min-width: 1200px) {
-    .map__main-info {
-        scale: 0.9;
-    }
-
-    .map__nijni {
-        transform: translate(-50%, 0%);
-        bottom: 50%;
-        left: 17%;
-    }
-
-    .map__mari {
-        transform: translate(-50%, 0%);
-        left: calc(18.4% - 115.5px);
-        bottom: 45.78%;
-    }
-
-    .map__chuvash {
-        transform: translate(-50%, 0%);
-        left: calc(17.67%);
-        top: calc(51.16%);
-    }
-
-    .map__tat {
-        transform: translate(-50%, 0%);
-        left: calc(20.4% + 153px);
-        top: calc(53.59%);
-    }
-
-    .map__kirov {
-        transform: translate(-50%, 0%);
-        left: calc(20.4% + 157px);
-        top: calc(45.59%);
-    }
-}
-
-@media (max-width: 1199px) and (min-width: 768px) {
-    .map__main-info {
-        scale: 0.9;
-    }
-
-    .map {
-        &__title {
-            max-width: 400px;
-        }
-
-        &__nijni {
-            top: 282.5px;
-            left: 121.65px;
-            transform: translate(0%, 0%);
-        }
-
-        &__kirov {
-            top: 356.5px;
-            left: 281.65px;
-            transform: translate(0%, 0%);
-        }
-
-        &__mari {
-            top: 369.5px;
-            left: -3.65px;
-            transform: translate(0%, 0%);
-        }
-
-        &__tat {
-            top: 416.5px;
-            left: 267.65px;
-            transform: translate(0%, 0%);
-        }
-
-        &__chuvash {
-            top: 397.5px;
-            left: 121.65px;
-            transform: translate(0%, 0%);
-        }
-
-        &__main-info-img {
-            object-fit: none;
-            object-position: left top;
-        }
-
-        &__main-info {
-            height: 762px;
-            width: 1200px;
-        }
-
-        &__news-list { 
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); 
-            grid-template-rows: repeat(2, 1fr);
-            gap: 8px 16px;
-
-            .newsCard{width: 100%;}
-        }     
-        
-        &__button-link {
-            padding: 8px 16px;
-            margin-right: auto;
-            margin-left: 0;
-            margin-top: 24px;font-size: 14px;
-            
-    }
-    }
-
-    .map .newsCard {
-        border-bottom: 1px solid $Neutral300;
-        padding-bottom: 8px;
-    }
-    
-    .map .newsCard__description-title {
-        font-size: 14px;
-        line-height: 18px;
-    }
-}
-
-@media (max-width: 767px) {
-    .map__circle {
-        display: none;
-    }
-
-    .map__nijnii-line,
-    .map__mari-line,
-    .map__tat-line,
-    .map__chuvash-line,
-    .map__kirov-line {
-        display: none;
-    }
-
-    .map {
-        &__title {
-            font-size: 30px;
-        }
-
-        &__nijni,
-        &__mari,
-        &__tat,
-        &__chuvash,
-        &__kirov {
-            position: relative;
-            top: 0px;
-            bottom: 0px;
-            left: 0px;
-            transform: translate(0%);
-            width: auto;
-            flex-direction: row;
-        }
-
-        &__main-info {
-            flex-direction: column;
-            display: flex;
-        }
-
-        &__category {
-            display: flex;
-            flex-direction: column;
-            row-gap: 8px;
-            order: 1;
-            margin-top: 16px;
-        }
-
-        &__cover-img  {
-            order: 2;
-            height: 762px;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        &__main-info-img {
-            object-fit: cover;
-            transform: scale(1.5); 
-           object-position: left;
-           transform-origin: 20% 40%;
-        }
-
-        &__news-list {
-            display: flex;
-            flex-direction: column;
-            row-gap: 8px;
-            width: 100%;
-        }
-
-        &__button-link {
-            padding: 8px 16px;
-            margin-right: auto;
-            margin-left: 0;
-            margin-top: 24px;
-            font-size: 14px;
-    }
-    }
-    .map .newsCard {
-        width: 100%;
-        border-bottom: 1px solid $Neutral300;
-        padding-bottom: 8px;
-        height: 89px;
-    }
+  }
+  .map .newsCard {
+    width: 100%;
+    border-bottom: 1px solid $Neutral300;
+    padding-bottom: 8px;
+    height: 89px;
+  }
 }

@@ -20,15 +20,16 @@ const schema = z.object({
       "Имя должно содержать только буквы, пробелы или дефис"
     ),
   phone: z
-    .string()
-    .min(1, "Введите номер телефона")
-    .refine(
-      (val) => {
-        const d = phoneDigits(val);
-        return d.length === 11 && d.startsWith("7");
-      },
-      { message: "Неверный формат номера" }
-    ),
+  .string()
+  .refine((val) => {
+    const d = phoneDigits(val);
+
+    if (!d) return false;
+
+    return d.length === 11 && d.startsWith('7');
+  }, {
+    message: 'Введите номер телефона',
+  }),
   position: z.string().min(1, "Введите должность"),
   email: z.string().email("Неверный email"),
   company: z.string().min(1, "Введите название компании"),
@@ -48,13 +49,15 @@ const Input = React.forwardRef<
 
 Input.displayName = "Input";
 
+
 export const Form: React.FC = () => {
   const {
     register,
     handleSubmit,
     control,
-    formState: { errors, touchedFields, isSubmitted },
+    formState: { errors, touchedFields },
     reset,
+    clearErrors,
   } = useForm<FormSchema>({
     resolver: zodResolver(schema),
     mode: "onChange",
@@ -73,11 +76,12 @@ export const Form: React.FC = () => {
   });
 
   const showError = (name: keyof FormSchema) =>
-    isSubmitted || touchedFields[name];
+    touchedFields[name];
 
   const onSubmit = (data: FormSchema) => {
     console.log("Submit data:", data);
     reset();
+    clearErrors();
   };
 
   return (

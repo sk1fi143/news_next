@@ -15,8 +15,6 @@ import { BarMod } from "./bar-mob";
 import { TabsMob } from "./tabs-mob";
 import { Close } from "../../svg/close";
 import { TabsMobileNavigation } from "./tabs-burger";
-import { Pages } from "@/shared/models/tabs";
-import { Regions } from "@/shared/models/regions";
 
 interface Props {
   data: CardsProps[];
@@ -90,7 +88,7 @@ export const Header: React.FC<Props> = ({ data }) => {
           <div className="header__burger-line"></div>
           <div className="header__burger-category">
             <h6 className="header__burger-title">Регион</h6>
-            <BarMod />
+            <BarMod onItemClick={() => setIsBurgerOpen(false)}/>
           </div>
           <div className="header__burger-line"></div>
           <TabsMob onItemClick={() => setIsBurgerOpen(false)} />

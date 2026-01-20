@@ -238,7 +238,7 @@
     background-color: $Neutral300;
   }
 }
-}
+
 
 .num-list-block {
  &:not(:last-child) {
@@ -352,9 +352,9 @@
 }
 
 @media (max-width: 767px) {
-      .news-feed {
-    display: none;
-  }
+    .news-feed {
+      display: none;
+    }
   .line {
     margin: 32px 0;
   }
@@ -381,6 +381,7 @@
     &__content {
       flex-direction: column;
     }
+
   }
   .mark-list-block ul li {
     font-weight: 400;
@@ -417,4 +418,5 @@
     font-size: 18px;
     line-height: 22px;
   }
+}
 }
