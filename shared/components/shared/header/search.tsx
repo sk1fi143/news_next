@@ -57,7 +57,7 @@ export const Search: React.FC<SearchProps> = ({ isOpen, onOpen, onClose }) => {
 
         <input
           ref={inputRef}
-          type="text"
+          type="search"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
           placeholder="Найти в новостях"
