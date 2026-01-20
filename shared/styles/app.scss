@@ -1,8 +1,6 @@
-@import './libs/variables';
-@import './libs/fonts';
-@import './libs/normalize';
-@import './components/all';
-@import './pages/pages';
+@use './libs' as *;
+@use './components/all' as *;
+@use './pages/pages' as *;
 
 body {
     width: 100%;

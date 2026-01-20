@@ -1,3 +1,6 @@
+@use "../libs/variables" as *;
+
+@mixin news-page {
 .news {
   display: flex;
   flex-direction: column;
@@ -234,6 +237,7 @@
     height: 1px;
     background-color: $Neutral300;
   }
+}
 }
 
 .num-list-block {

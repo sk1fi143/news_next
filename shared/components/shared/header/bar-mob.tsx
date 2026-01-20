@@ -6,7 +6,6 @@ import { usePathname, useRouter } from 'next/navigation';
 
 interface IRegion {
   name: string;
-  logo: string | StaticImport;
   url: string;
 }
 

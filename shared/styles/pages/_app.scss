@@ -1,3 +1,5 @@
+@use "../libs/variables" as *;
+
 .page {
   &__sticky {
     display: flex;

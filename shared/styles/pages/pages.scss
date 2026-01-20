@@ -1,11 +1,12 @@
-@import "./_app";
-@import "./about";
-@import "./notFound";
-@import "./contacts";
-@import "./docs";
-@import './topics';
-
+@use "../libs/variables" as *;
+@use "./_app";
+@use "./about";
+@use "./notFound";
+@use "./contacts";
+@use "./docs";
+@use "./topics";
+@use "./news" as news;
 
 .newsMain {
-    @import './news';
+  @include news.news-page();
 }

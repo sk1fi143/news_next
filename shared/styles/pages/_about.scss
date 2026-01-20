@@ -1,3 +1,5 @@
+@use "../libs/variables" as *;
+
 .about {
     &__row {
         display: grid;

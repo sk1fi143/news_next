@@ -1,5 +1,6 @@
-@import "./tabs";
-@import "./social";
+@use "../../libs/variables" as *;
+@use "./tabs";
+@use "./social";
 
 .footer {
   width: 100%;

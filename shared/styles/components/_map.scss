@@ -1,3 +1,5 @@
+@use "../libs/variables" as *;
+
 .map {
     display: flex;
     flex-direction: column;

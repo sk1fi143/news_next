@@ -1,6 +1,7 @@
-@import './form';
-@import './card-about';
-@import './contact-info';
+@use "../../libs/variables" as *;
+@use "./form";
+@use "./card-about";
+@use "./contact-info";
 
 .about-us {
   max-width: 1376px;

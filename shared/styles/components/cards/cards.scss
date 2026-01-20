@@ -1,6 +1,7 @@
-@import "./card";
-@import "./cards-wrapper";
-@import './head-w-sort';
+@use "../../libs/variables" as *;
+@use "./card";
+@use "./cards-wrapper";
+@use "./head-w-sort";
 
 .newsCards {
   display: flex;

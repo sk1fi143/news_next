@@ -1,7 +1,8 @@
-@import "./bar";
-@import "./select";
-@import "./search";
-@import "./tabs";
+@use "../../libs/variables" as *;
+@use "./bar";
+@use "./select";
+@use "./search";
+@use "./tabs";
 
 .header {
   width: 100%;

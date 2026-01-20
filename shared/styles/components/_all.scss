@@ -1,16 +1,17 @@
-@import './header/header';
-@import './footer/footer';
-@import './contact';
-@import './promoCards';
-@import './cards/cards';
-@import './head';
-@import './about/about';
-@import './sort';
-@import './read-now';
-@import './news-feed';
-@import './socials';
-@import './map';
-@import './news/news';
+@use "../libs/variables" as *;
+@forward './header/header';
+@forward './footer/footer';
+@forward './contact';
+@forward './promoCards';
+@forward './cards/cards';
+@forward './head';
+@forward './about/about';
+@forward './sort';
+@forward './read-now';
+@forward './news-feed';
+@forward './socials';
+@forward './map';
+@forward './news/news';
 
 .line {
     background: $Neutral300;

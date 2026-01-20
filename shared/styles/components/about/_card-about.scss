@@ -1,3 +1,5 @@
+@use "../../libs/variables" as *;
+
 .about-card {
   background-color: $Neutral200;
   display: flex;
