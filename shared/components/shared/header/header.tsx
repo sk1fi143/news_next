@@ -8,7 +8,6 @@ import { Search } from "./search";
 import { CardsProps } from "@/shared/interface/cards";
 import { RegionLink } from "../region-link";
 import { Logo_Mob } from "../../svg/logo-mob";
-import { SearchIcon } from "../../svg/search";
 import { Burger } from "../../svg/burger";
 import { Cross } from "../../svg/cross";
 import { BarMod } from "./bar-mob";
@@ -16,6 +15,7 @@ import { TabsMob } from "./tabs-mob";
 import { Close } from "../../svg/close";
 import { TabsMobileNavigation } from "./tabs-burger";
 import { Logo_H_Desctop } from "../../svg/logo_H_Desctop";
+import { SearchMob } from "./search-mob";
 
 interface Props {
   data: CardsProps[];
@@ -56,16 +56,7 @@ export const Header: React.FC<Props> = ({ data }) => {
           </>
         )}
         <div className="header__info-mob">
-          <div className="header__mob-search">
-            <div className="header__mob-search-icon">
-              <SearchIcon />
-            </div>
-            <input
-              type="text"
-              placeholder="Найти в новостях"
-              className="header__mob-input"
-            />
-          </div>
+         <SearchMob />
           <div
             className="header__burger-circle"
             onClick={() => setIsBurgerOpen(!isBurgerOpen)}

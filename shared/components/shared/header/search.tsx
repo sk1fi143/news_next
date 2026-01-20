@@ -14,43 +14,52 @@ interface SearchProps {
 export const Search: React.FC<SearchProps> = ({ isOpen, onOpen, onClose }) => {
   const [searchValue, setSearchValue] = React.useState("");
   const inputRef = React.useRef<HTMLInputElement>(null);
-  const containerRef = React.useRef<HTMLDivElement>(null);
+  const containerRef = React.useRef<HTMLDivElement>(null); // реф для контейнера поиска
   const router = useRouter();
 
   const handleSearch = () => {
-    const query = searchValue.trim();
-    if (query) {
-      router.push(`/search?q=${encodeURIComponent(query)}`);
+    if (searchValue.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchValue.trim())}`);
       onClose();
       setSearchValue("");
     }
   };
 
-  React.useEffect(() => {
-    if (isOpen && inputRef.current) inputRef.current.focus();
-  }, [isOpen]);
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
 
   React.useEffect(() => {
+    if (isOpen && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isOpen]);
+
+  // Обработчик клика вне компонента
+  React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (isOpen && containerRef.current && !containerRef.current.contains(event.target as Node)) {
+      if (
+        isOpen &&
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
         onClose();
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, [isOpen, onClose]);
 
   return (
     <div className={`search ${isOpen ? "search__full-width" : ""}`} ref={containerRef}>
-      {/* Используем form, чтобы Enter на мобильных срабатывал */}
-      <form
-      action="."
+      <div
         className={`search__container ${isOpen ? "open" : ""}`}
         onClick={!isOpen ? onOpen : undefined}
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSearch();
-        }}
       >
         <div className="search__container-icon">
           <SearchIcon />
@@ -58,24 +67,24 @@ export const Search: React.FC<SearchProps> = ({ isOpen, onOpen, onClose }) => {
 
         <input
           ref={inputRef}
-          type="search"
+          type="text"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
+          onKeyDown={handleKeyDown}
           placeholder="Найти в новостях"
           className="search__container-input"
-          enterKeyHint="search"   // подсказка для клавиатуры на мобиле
-          inputMode="search"      // оптимизирует клавиатуру для поиска
         />
 
-        {/* Кнопка submit — даже если скрыта, клавиатура на мобиле сможет отправить форму */}
         <button
-          type="submit"
+          onClick={(e) => {
+            e.stopPropagation();
+            handleSearch();
+          }}
           className="search__container-button"
-          onClick={(e) => e.stopPropagation()}
         >
           Найти
         </button>
-      </form>
+      </div>
 
       {isOpen && (
         <button className="search__close" onClick={onClose}>
