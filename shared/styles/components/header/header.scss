@@ -22,23 +22,16 @@
     align-items: center;
     column-gap: 36px;
     padding: 16px 32px;
+
+    &-logo {
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 }
 
 .header__mob-navigation {
   display: none;
-}
-
-@media (max-width: 1302px) and (min-width: 1200px) {
-  .header {
-    &__row {
-      padding: 16px 12px;
-    }
-  }
-
-  .tabs__item {
-    padding: 16px 10px;
-  }
 }
 
 @media (max-width: 1199px) and (min-width: 768px) {

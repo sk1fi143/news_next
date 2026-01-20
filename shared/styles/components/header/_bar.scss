@@ -11,8 +11,17 @@
 
   &__item {
     padding: 20px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+    align-items: center;
     cursor: pointer;
     height: 100%;
+
+    &-logo {
+      height: 18px;
+      width: 18px;
+    }
 
     &-text {
       color: $Neutral700;

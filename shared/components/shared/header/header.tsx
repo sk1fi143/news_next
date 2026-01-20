@@ -15,6 +15,7 @@ import { BarMod } from "./bar-mob";
 import { TabsMob } from "./tabs-mob";
 import { Close } from "../../svg/close";
 import { TabsMobileNavigation } from "./tabs-burger";
+import { Logo_H_Desctop } from "../../svg/logo_H_Desctop";
 
 interface Props {
   data: CardsProps[];
@@ -40,9 +41,6 @@ export const Header: React.FC<Props> = ({ data }) => {
         <RegionLink className="header__logo-mob" href="/">
           <Logo_Mob className="header__logo-mob" />
         </RegionLink>
-        <RegionLink href="/" className="header__row-logo">
-          <Logo_Mob className="header__row-logo" />
-        </RegionLink>
         <Search
           isOpen={isSearchOpen}
           onOpen={() => setIsSearchOpen(true)}
@@ -51,7 +49,10 @@ export const Header: React.FC<Props> = ({ data }) => {
         {!isSearchOpen && (
           <>
             <Tabs />
-            <Select topics={data}/>
+            <RegionLink href="/" className="header__row-logo">
+              <Logo_H_Desctop className="header__row-logo" />
+            </RegionLink>
+            <Select topics={data} />
           </>
         )}
         <div className="header__info-mob">
@@ -84,11 +85,11 @@ export const Header: React.FC<Props> = ({ data }) => {
           </div>
           <div className="header__burger-line"></div>
           <h6 className="header__burger-title">Категории новостей</h6>
-          <Select topics={data} onItemClick={() => setIsBurgerOpen(false)}/>
+          <Select topics={data} onItemClick={() => setIsBurgerOpen(false)} />
           <div className="header__burger-line"></div>
           <div className="header__burger-category">
             <h6 className="header__burger-title">Регион</h6>
-            <BarMod onItemClick={() => setIsBurgerOpen(false)}/>
+            <BarMod onItemClick={() => setIsBurgerOpen(false)} />
           </div>
           <div className="header__burger-line"></div>
           <TabsMob onItemClick={() => setIsBurgerOpen(false)} />

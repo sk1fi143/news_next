@@ -1,11 +1,13 @@
 "use client";
 
 import { Regions } from "@/shared/models/regions";
+import Image from "next/image";
 import { usePathname, useRouter } from 'next/navigation';
 
 interface IRegion {
   name: string;
   url: string;
+  logo?: string;
 }
 
 export const Bar = () => {
@@ -25,6 +27,7 @@ export const Bar = () => {
     <div className="topBar">
       {Regions.map((region, idx) => (
         <div onClick={() => handleSelect(region)} className={`topBar__item ${region.url === selectedRegion?.url ? 'active' : ''}`} key={idx}>
+          {region.logo && <Image className="topBar__item-logo" src={region.logo} alt={region.name} />}
           <span className="topBar__item-text">{region.name}</span>
         </div>
       ))}
