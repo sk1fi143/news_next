@@ -59,7 +59,7 @@ export const Select: React.FC<Props> = ({ topics, onItemClick }) => {
         <Union />
 
         <span className="select__visible-text">
-          {selectedTopic ? selectedTopic.title : "Выбрать категорию"}
+          {selectedTopic ? selectedTopic.title : "Выбрать рубрику"}
         </span>
 
         <div
