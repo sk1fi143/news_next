@@ -92,7 +92,7 @@ export const NewsTopicLayout: React.FC<Props> = ({ type, data }) => {
 
   return (
     <main>
-      <Head breadcrumbs title={`${type}: ${data.title}`} />
+      <Head breadcrumbs breadcrumbsSlug={data.title} title={`${type}: ${data.title}`} />
 
       <div className="newsTopics">
         {sections.map((sectionIndices, index) => (

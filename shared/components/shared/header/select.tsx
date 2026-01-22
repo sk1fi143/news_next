@@ -5,6 +5,8 @@ import { ArrowDown } from "@/shared/components/svg/arrowDown";
 import { CardsProps } from "@/shared/interface/cards";
 import { RegionLink } from "../region-link";
 import { Union } from "../../svg/union";
+import { useSearchParams, usePathname } from "next/navigation";
+import { REGIONS_CODES } from "@/shared/models/regionCodes";
 
 interface Props {
   topics: CardsProps[];
@@ -12,11 +14,19 @@ interface Props {
 }
 export const Select: React.FC<Props> = ({ topics, onItemClick }) => {
   const [open, setOpen] = useState(false);
-  const [selectedTopic, setSelectedTopic] = useState<CardsProps | null>(null);
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
   const selectRef = useRef<HTMLDivElement>(null);
 
+  // Получаем текущий topic из URL
+  const currentTopicSlug = searchParams.get("topic");
+  
+  // Находим выбранную тему на основе URL параметра
+  const selectedTopic = currentTopicSlug
+    ? topics.find((topic) => topic.slug === currentTopicSlug) || null
+    : null;
+
   const handleSelect = (topic: CardsProps) => {
-    setSelectedTopic(topic);
     setOpen(false);
     onItemClick?.();
   };
@@ -66,16 +76,29 @@ export const Select: React.FC<Props> = ({ topics, onItemClick }) => {
 
       {open && (
         <div className="select__hidden">
-          {uniqueTopics.map((topic) => (
-            <RegionLink
-              onClick={() => handleSelect(topic)}
-              className="select__hidden-item"
-              href={`/news?topic=${topic.slug}`}
-              key={topic.slug}
-            >
-              <span className="select__hidden-item-text">{topic.title}</span>
-            </RegionLink>
-          ))}
+          {uniqueTopics.map((topic) => {
+            // Определяем, на какой странице мы находимся (news или articles).
+            // Учитываем возможный префикс региона: /{region}/articles
+            const segments = pathname.split("/").filter(Boolean);
+            const firstSegment = segments[0];
+            const hasRegionPrefix = firstSegment && REGIONS_CODES.includes(firstSegment as any);
+            const currentSegment = hasRegionPrefix ? segments[1] : firstSegment;
+            const isArticlesPage = currentSegment === "articles";
+            const href = isArticlesPage
+              ? `/articles?topic=${topic.slug}`
+              : `/news?topic=${topic.slug}`;
+            
+            return (
+              <RegionLink
+                onClick={() => handleSelect(topic)}
+                className="select__hidden-item"
+                href={href}
+                key={topic.slug}
+              >
+                <span className="select__hidden-item-text">{topic.title}</span>
+              </RegionLink>
+            );
+          })}
         </div>
       )}
     </div>

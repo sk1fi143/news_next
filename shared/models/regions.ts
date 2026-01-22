@@ -38,3 +38,12 @@ export const Regions = [
 
 export type Region = typeof Regions[number];
 export type RegionCode = Region['url'];
+
+
+export const regionNamesMap: Record<string, string> = {
+  mari_el: "Республики Марий Эл",
+  tatarstan: "Республики Татарстан",
+  chuvash: "Республики Чувашия",
+  nizhny_novgorod: "Нижегородской области",
+  kirov: "Кировской области",
+};

@@ -130,6 +130,8 @@ export async function buildPageMetadata(
       description: remote?.openGraph?.description ?? description,
       url: remote?.openGraph?.url ?? remote?.url ?? canonical,
       type: ogType,
+      siteName: "Новая Версия Приволжье",
+      locale: "ru_RU",
       images,
     },
   };

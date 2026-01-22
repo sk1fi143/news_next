@@ -5,9 +5,13 @@ import { MainLayout } from "@/shared/components/pages/mainLayout";
 import { NewsTopicLayout } from "@/shared/components/pages/newsTopicLayout";
 import { notFound } from "next/navigation";
 import { regionDataMap } from "../page";
-import { generateBreadcrumbListSchema, generateItemListSchema } from "@/shared/lib/schema";
+import {
+  generateBreadcrumbListSchema,
+  generateItemListSchema,
+} from "@/shared/lib/schema";
 import { JsonLd } from "@/shared/components/schema/json-ld";
 import { buildPageMetadata } from "@/shared/lib/seo";
+import { regionNamesMap } from "@/shared/models/regions";
 
 // Пример серверного запроса (оставлено закомментированным):
 // const newsList = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`, { next: { revalidate: 60 } })
@@ -27,12 +31,39 @@ export async function generateMetadata({
 
   const path = query.toString() ? `/news?${query.toString()}` : "/news";
 
+  // Получаем данные для поиска названия раздела
+  let filteredData;
+  if (params.region && params.region in regionDataMap) {
+    filteredData = regionDataMap[params.region as keyof typeof regionDataMap];
+  } else {
+    filteredData = NewsData;
+  }
+
+  // Находим topicItem по slug, чтобы получить русское название
+  let topicTitle = params.topic;
+  if (params.topic) {
+    const topicItem = filteredData.find((item) => item.slug === params.topic);
+    if (topicItem) {
+      topicTitle = topicItem.title;
+    }
+  }
+
+  const regionName =
+    params.region && regionNamesMap[params.region]
+      ? regionNamesMap[params.region]
+      : "";
+
   const title = params.topic
-    ? `Новости: ${params.topic}`
-    : "Новости - Новая Версия Приволжье";
+    ? `Новости: ${topicTitle}${regionName ? ` — ${regionName}` : ""}`
+    : regionName
+      ? `Новости ${regionName} — Новая Версия Приволжье`
+      : "Новости — Новая Версия Приволжье";
+
   const description = params.topic
-    ? `Свежие новости по теме «${params.topic}»`
-    : "Все новости регионов Приволжья";
+    ? `Новости по теме «${topicTitle}»${regionName ? ` в ${regionName}` : ""}`
+    : regionName
+      ? `Все новости ${regionName}`
+      : "Все новости регионов Приволжья";
 
   return buildPageMetadata(path, {
     title,
@@ -51,6 +82,9 @@ export default async function News({
 }) {
   const resolvedSearchParams = await searchParams;
   const { region: regionCode } = await searchParams;
+
+  const regionName =
+    regionCode && regionNamesMap[regionCode] ? regionNamesMap[regionCode] : "";
 
   let filteredData;
   if (regionCode && regionCode in regionDataMap) {
@@ -90,9 +124,9 @@ export default async function News({
 
   // ItemList для списка новостей (первые 20)
   const newsList = filteredData
-    .flatMap(category => category.cardsData)
+    .flatMap((category) => category.cardsData)
     .slice(0, 20)
-    .map(news => ({
+    .map((news) => ({
       name: news.title,
       url: `/news/${news.id}`,
       image: news.imageUrl,
@@ -113,6 +147,7 @@ export default async function News({
         notRegionData={NewsData}
         data={filteredData}
         type="Новости"
+        regionName={regionName}
       />
     </>
   );

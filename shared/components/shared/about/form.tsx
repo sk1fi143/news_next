@@ -30,10 +30,7 @@ const schema = z.object({
   }, {
     message: 'Введите номер телефона',
   }),
-  position: z.string().min(1, "Введите должность"),
   email: z.string().email("Неверный email"),
-  company: z.string().min(1, "Введите название компании"),
-  address: z.string().min(1, "Введите адрес компании"),
   message: z.string().optional(),
   terms: z.boolean().refine((val) => val, "Подтвердите согласие"),
 });
@@ -66,10 +63,7 @@ export const Form: React.FC = () => {
     defaultValues: {
       name: "",
       phone: "",
-      position: "",
       email: "",
-      company: "",
-      address: "",
       message: "",
       terms: false,
     },
@@ -152,27 +146,6 @@ export const Form: React.FC = () => {
             />
           </label>
 
-          <label htmlFor="position" className="communication__form-field-label">
-            <div className="communication__form-field-label-top">
-              {errors.position && (
-                <span role="alert" className="communication__form-error">
-                  {errors.position.message}
-                </span>
-              )}
-            </div>
-            <input
-              id="position"
-              {...register("position")}
-              type="text"
-              placeholder="Ваша должность"
-              className={`communication__form-fields-field ${
-                errors.position ? "error" : ""
-              }`}
-              aria-invalid={!!errors.position}
-              required
-            />
-          </label>
-
           <label htmlFor="email" className="communication__form-field-label">
             <div className="communication__form-field-label-top">
               {errors.email && showError("email") && (
@@ -194,55 +167,14 @@ export const Form: React.FC = () => {
             />
           </label>
 
-          <label htmlFor="company" className="communication__form-field-label">
-            <div className="communication__form-field-label-top">
-              {errors.company && (
-                <span role="alert" className="communication__form-error">
-                  {errors.company.message}
-                </span>
-              )}
-            </div>
-            <input
-              id="company"
-              {...register("company")}
-              type="text"
-              placeholder="Название компании"
-              className={`communication__form-fields-field ${
-                errors.company ? "error" : ""
-              }`}
-              aria-invalid={!!errors.company}
-              required
-            />
-          </label>
-
-          <label htmlFor="address" className="communication__form-field-label">
-            <div className="communication__form-field-label-top">
-              {errors.address && (
-                <span role="alert" className="communication__form-error">
-                  {errors.address.message}
-                </span>
-              )}
-            </div>
-            <input
-              id="address"
-              {...register("address")}
-              type="text"
-              placeholder="Адрес компании"
-              className={`communication__form-fields-field ${
-                errors.address ? "error" : ""
-              }`}
-              aria-invalid={!!errors.address}
-              required
-            />
-          </label>
-        </div>
-
-        <textarea
+          <textarea
           id="message"
           {...register("message")}
           className="communication__form-textarea"
           placeholder="Ваше сообщение"
         />
+        </div>
+
 
         <div className="communication__form-terms">
           <input

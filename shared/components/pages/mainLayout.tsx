@@ -1,6 +1,8 @@
-"use client";
+ "use client";
 
 import React from "react";
+import { usePathname } from "next/navigation";
+import { Regions } from "@/shared/models/regions";
 import { Head } from "../shared/head";
 import { NewsFeed } from "../shared/news-feed";
 import { CardsWrapper } from "../shared/cards/cards-wrapper";
@@ -30,9 +32,13 @@ export const MainLayout: React.FC<Props> = ({
   notRegionData,
   promoData,
 }) => {
-  const title = regionName
+  const titleMain = regionName
     ? `Главные ${type.toLowerCase()} ${regionName}`
     : `Главные ${type.toLowerCase()}`;
+
+    const title = regionName
+    ? `${type} ${regionName}`
+    : `${type}`;
 
   const finalPromoData = promoData || PromoCardData;
 
@@ -44,9 +50,15 @@ export const MainLayout: React.FC<Props> = ({
   const visibleData = data.slice(0, visibleCount);
   const hasMore = visibleCount < data.length;
 
+  const pathname = usePathname();
+  const segments = pathname.split("/").filter(Boolean);
+  const firstSegment = segments[0];
+  const isRegionPrefix = firstSegment && Regions.some((r) => r.url === firstSegment);
+  const isHome = segments.length === 0 || (isRegionPrefix && segments.length === 1);
+
   return (
     <main>
-      {breadcrumbs ? <Head breadcrumbs title={type} /> : <Head title={title} />}
+      <Head breadcrumbs={breadcrumbs} title={isHome ? titleMain : title} />
       <div className="page__sticky">
         <NewsFeed
           title="Новости"

@@ -1,19 +1,62 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card } from "./cards/card";
 import Image from "next/image";
 import MapImage from "@img/map.svg";
 import { MapRegions } from "@/shared/models/map";
 import { CardsProps } from "@/shared/interface/cards";
 import { RegionLink } from "./region-link";
+import { usePathname, useSearchParams } from "next/navigation";
+import { Regions } from "@/shared/models/regions";
 
 interface Props {
   data: CardsProps[];
 }
 
+// Маппинг между regionCode из URL и mapRegionId
+const regionCodeToMapId: Record<string, string> = {
+  mari_el: "mari",
+  tatarstan: "tat",
+  chuvash: "chuvash",
+  nizhny_novgorod: "nijni",
+  kirov: "kirov",
+};
+
 export const Map: React.FC<Props> = ({ data }) => {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  
   const [activeRegion, setActiveRegion] = useState<string>("nijni");
+
+  // Обновляем активный регион при изменении URL
+  useEffect(() => {
+    // Сначала проверяем pathname (первый сегмент может быть регионом)
+    const segments = pathname.split("/").filter(Boolean);
+    const firstSegment = segments[0];
+    const regionFromPath = Regions.find((r) => r.url === firstSegment);
+    
+    if (regionFromPath && regionFromPath.url) {
+      const mapId = regionCodeToMapId[regionFromPath.url];
+      if (mapId) {
+        setActiveRegion(mapId);
+        return;
+      }
+    }
+    
+    // Если не нашли в pathname, проверяем searchParams
+    const regionParam = searchParams.get("region");
+    if (regionParam) {
+      const mapId = regionCodeToMapId[regionParam];
+      if (mapId) {
+        setActiveRegion(mapId);
+        return;
+      }
+    }
+    
+    // Если регион не найден, используем значение по умолчанию
+    setActiveRegion("nijni");
+  }, [pathname, searchParams]);
 
   const currentRegion = MapRegions.find((r) => r.id === activeRegion);
 

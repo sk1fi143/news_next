@@ -10,6 +10,7 @@ import { generateItemListSchema } from "@/shared/lib/schema";
 import { JsonLd } from "@/shared/components/schema/json-ld";
 import { generateBreadcrumbListSchema } from "@/shared/lib/schema";
 import { buildPageMetadata } from "@/shared/lib/seo";
+import { regionNamesMap } from "@/shared/models/regions";
 
 // Пример получения данных с бэкенда (оставлено закомментированным):
 // const homeData = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`, { next: { revalidate: 60 } })
@@ -36,14 +37,6 @@ export const regionDataMap = {
   kirov: NewsKO,
   nizhny_novgorod: NewsNO,
 } as const;
-
-const regionNamesMap: Record<string, string> = {
-  mari_el: "Республики Марий Эл",
-  tatarstan: "Республики Татарстан",
-  chuvash: "Республики Чувашия",
-  nizhny_novgorod: "Нижегородской области",
-  kirov: "Кировской области",
-};
 
 export default async function Home({ searchParams }: PageProps) {
   const { region: regionCode } = await searchParams;
@@ -88,6 +81,7 @@ export default async function Home({ searchParams }: PageProps) {
       <JsonLd data={itemListSchema} />
       {regionName && <JsonLd data={breadcrumbSchema} />}
       <MainLayout
+        breadcrumbs={Boolean(regionName)}
         notRegionData={NewsData}
         data={filteredData}
         type="Новости"
