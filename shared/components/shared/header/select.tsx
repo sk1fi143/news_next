@@ -6,7 +6,7 @@ import { CardsProps } from "@/shared/interface/cards";
 import { RegionLink } from "../region-link";
 import { Union } from "../../svg/union";
 import { useSearchParams, usePathname } from "next/navigation";
-import { REGIONS_CODES } from "@/shared/models/regionCodes";
+import { RegionCode, REGIONS_CODES } from "@/shared/models/regionCodes";
 
 interface Props {
   topics: CardsProps[];
@@ -26,7 +26,7 @@ export const Select: React.FC<Props> = ({ topics, onItemClick }) => {
     ? topics.find((topic) => topic.slug === currentTopicSlug) || null
     : null;
 
-  const handleSelect = (topic: CardsProps) => {
+  const handleSelect = () => {
     setOpen(false);
     onItemClick?.();
   };
@@ -81,7 +81,7 @@ export const Select: React.FC<Props> = ({ topics, onItemClick }) => {
             // Учитываем возможный префикс региона: /{region}/articles
             const segments = pathname.split("/").filter(Boolean);
             const firstSegment = segments[0];
-            const hasRegionPrefix = firstSegment && REGIONS_CODES.includes(firstSegment as any);
+            const hasRegionPrefix = firstSegment && REGIONS_CODES.includes(firstSegment as RegionCode);
             const currentSegment = hasRegionPrefix ? segments[1] : firstSegment;
             const isArticlesPage = currentSegment === "articles";
             const href = isArticlesPage
@@ -90,7 +90,7 @@ export const Select: React.FC<Props> = ({ topics, onItemClick }) => {
             
             return (
               <RegionLink
-                onClick={() => handleSelect(topic)}
+                onClick={() => handleSelect()}
                 className="select__hidden-item"
                 href={href}
                 key={topic.slug}

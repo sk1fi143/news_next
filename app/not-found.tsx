@@ -1,6 +1,7 @@
 import { NotFoundLayout } from "@/shared/components/pages/notFound";
 import { Metadata } from "next";
 import { buildPageMetadata } from "@/shared/lib/seo";
+import { Suspense } from "react";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata("/404", {
@@ -13,6 +14,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function NotFound() {
   return (
-   <NotFoundLayout />
+    <Suspense fallback={null}>
+      <NotFoundLayout />
+    </Suspense>
   );
 }

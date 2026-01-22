@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
 
 interface Props {
@@ -14,7 +14,11 @@ export const Head: React.FC<Props> = ({
 }) => {
   return (
     <div className="head">
-      {breadcrumbs && <Breadcrumbs slug={breadcrumbsSlug} />}
+      {breadcrumbs && (
+        <Suspense fallback={null}>
+          <Breadcrumbs slug={breadcrumbsSlug} />
+        </Suspense>
+      )}
       <h1 className="head__title">{title}</h1>
     </div>
   );

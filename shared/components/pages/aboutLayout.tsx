@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 
 import { AboutUs } from "../shared/about/about";
 import Form from "../shared/about/form";
@@ -77,7 +77,9 @@ export const AboutLayout: React.FC<Props> = ({ newsData, aboutData }) => {
 
       <Line />
 
-      <Map data={newsData} />
+      <Suspense fallback={null}>
+        <Map data={newsData} />
+      </Suspense>
     </main>
   );
 };

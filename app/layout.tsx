@@ -3,6 +3,7 @@ import '../shared/styles/app.scss';
 import { Header } from '@cmp/shared/header/header';
 import { Footer } from "@cmp/shared/footer/footer";
 import { Inter } from 'next/font/google';
+import { Suspense } from "react";
 import { NewsData } from "@/shared/models/newsData";
 import { generateWebSiteSchema, generateOrganizationSchema } from "@/shared/lib/schema";
 import { JsonLd } from "@/shared/components/schema/json-ld";
@@ -62,7 +63,9 @@ export default function RootLayout({
         className={`${inter.className} antialiased`}
         suppressHydrationWarning
       >
-        <Header data={NewsData} />
+        <Suspense fallback={null}>
+          <Header data={NewsData} />
+        </Suspense>
         {children}
         <Footer />
       </body>

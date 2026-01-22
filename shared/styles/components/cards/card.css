@@ -1,0 +1,186 @@
+.newsCard {
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  gap: 8px;
+}
+.newsCard__img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.newsCard__description {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+.newsCard__description-title {
+  font-weight: 500;
+  color: rgb(37, 37, 37);
+}
+.newsCard__description-info {
+  display: flex;
+  gap: 8px;
+}
+.newsCard__description-txt {
+  color: #626262;
+  font-family: Inter;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 500;
+}
+.newsCard-L {
+  display: flex;
+  grid-column: span 2;
+  flex-direction: column;
+}
+.newsCard-L .newsCard__img {
+  border-radius: 20px;
+  height: 510px;
+}
+.newsCard-L .newsCard__description-title {
+  font-size: 18px;
+  line-height: 22px;
+}
+.newsCard-L .newsCard__description-info {
+  flex-direction: row;
+}
+.newsCard-M, .newsCard-F {
+  display: flex;
+  gap: 8px;
+  max-width: 332px;
+  flex-direction: column;
+}
+.newsCard-M .newsCard__img, .newsCard-F .newsCard__img {
+  border-radius: 16px;
+  height: 249px;
+}
+.newsCard-M .newsCard__description-title, .newsCard-F .newsCard__description-title {
+  font-size: 16px;
+  line-height: 20px;
+}
+.newsCard-M .newsCard__description-info, .newsCard-F .newsCard__description-info {
+  flex-direction: row;
+}
+.newsCard-S {
+  display: flex;
+  gap: 8px;
+  width: 332px;
+  height: 121px;
+  flex-direction: row;
+}
+.newsCard-S .newsCard__img {
+  border-radius: 8px;
+  width: 140px;
+  height: 100%;
+}
+.newsCard-S .newsCard__description-title {
+  font-size: 14px;
+  line-height: 18px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+.newsCard-S .newsCard__description-info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+}
+.newsCard-S .newsCard__description-txt:last-child {
+  grid-column: 1/-1;
+}
+
+@media (max-width: 1199px) and (min-width: 768px) {
+  .newsCard-L {
+    width: 728px;
+  }
+  .newsCard-L .newsCard__img {
+    height: 546px;
+  }
+  .newsCard-L .newsCard__description-title {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .newsCard-M {
+    width: 356px;
+  }
+  .newsCard-M .newsCard__img {
+    height: 267px;
+  }
+  .newsCard-M .newsCard__description-title {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .newsCard-S, .newsCard-F {
+    flex-direction: row;
+    width: 356px;
+    height: 100px;
+  }
+  .newsCard-S .newsCard__img, .newsCard-F .newsCard__img {
+    width: 134px;
+    height: 100%;
+    border-radius: 8px;
+  }
+  .newsCard-S .newsCard__description-title, .newsCard-F .newsCard__description-title {
+    font-size: 14px;
+    line-height: 18px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+  }
+  .newsCard-S .newsCard__description-info, .newsCard-F .newsCard__description-info {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px;
+  }
+}
+@media (max-width: 767px) {
+  .newsCard__description-txt {
+    font-size: 10px;
+    line-height: 10px;
+  }
+  .newsCard-L {
+    width: 100%;
+    flex-direction: column;
+  }
+  .newsCard-L .newsCard__img {
+    height: 257px;
+  }
+  .newsCard-L .newsCard__description-title {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .newsCard-M, .newsCard-S, .newsCard-F {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 8px;
+    height: 80px;
+    max-width: 100%;
+  }
+  .newsCard-M .newsCard__img, .newsCard-S .newsCard__img, .newsCard-F .newsCard__img {
+    width: 110px;
+    height: 100%;
+    border-radius: 4px;
+  }
+  .newsCard-M .newsCard__description-title, .newsCard-S .newsCard__description-title, .newsCard-F .newsCard__description-title {
+    font-size: 16px;
+    line-height: 20px;
+    overflow: hidden;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+  }
+  .newsCard-M .newsCard__description-info, .newsCard-S .newsCard__description-info, .newsCard-F .newsCard__description-info {
+    display: flex;
+    flex-direction: row;
+  }
+}/*# sourceMappingURL=card.css.map */
