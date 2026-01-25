@@ -10,6 +10,22 @@
   background: $white;
   display: flex;
   flex-direction: column;
+  height: 146px;
+
+  &__desctopBurger {
+    background: $Neutral200;
+    transition: all 0.3s ease-in-out;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid $Neutral300;
+    padding: 16px 18.63px;
+    cursor: pointer;
+
+    &:hover {
+      background: $Neutral300;
+    }
+  }
 
   &__logo-mob,
   &__info-mob {
@@ -20,21 +36,104 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    column-gap: 36px;
+    column-gap: 8px;
     padding: 16px 32px;
 
     &-logo {
-      margin-left: auto;
       margin-right: auto;
+      margin-left: 24px;
     }
   }
 }
+
+.desctopNav {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  align-items: start;
+  box-shadow: 0px 0px 24px 0px #0000001f;
+  background: $white;
+  z-index: 999;
+  height: 100vh;
+  padding: 16px 32px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  max-width: 364px;
+  transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid $Neutral300;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: $white;
+    transition: all 0.3s ease-in-out;
+    margin-left: auto;
+
+    &:hover {
+      background: $Neutral200;
+    }
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: $Neutral700;
+  }
+
+  &__socials {
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+    align-items: center;
+
+    &-item {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: $Neutral200;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        background: $Neutral300;
+      }
+    }
+  }
+}
+
+.desctopNav.open {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
 
 .header__mob-navigation {
   display: none;
 }
 
 @media (max-width: 1199px) and (min-width: 768px) {
+  .desctopNav {
+    display: none;
+  }
+
+  .header__desctopBurger {
+    display: none;
+  }
+
   .header__row .select {
     display: none;
   }
@@ -47,6 +146,7 @@
   }
 
   .header {
+    height: auto;
     &__logo-mob {
       display: block;
     }
@@ -197,6 +297,14 @@
 }
 
 @media (max-width: 767px) {
+  .desctopNav {
+    display: none;
+  }
+
+  .header__desctopBurger {
+    display: none;
+  }
+
   .search,
   .tabs,
   .header__row-logo,
@@ -206,7 +314,7 @@
   }
 
   .burger-block {
-    height: calc(100dvh - 175px);
+    height: calc(100dvh - 170px);
     width: 100%;
     background: white;
     box-shadow: 0px 0px 24px 0px #0000001f;
@@ -294,6 +402,7 @@
   }
 
   .header {
+    height: auto;
     .header__info-mob {
       width: 100%;
     }

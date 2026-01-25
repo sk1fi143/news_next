@@ -3,11 +3,18 @@ import { Tabs } from "./tabs";
 import { Social } from "./social";
 import { Contact } from "../contact";
 import { Logo_Footer } from "@cmp/svg/logo_Footer";
-import { AboutData } from "@/shared/models/about";
-import { IContact, SocialItem } from "@/shared/interface/IAbout";
+import {
+  AboutDataItem,
+  AboutSocialsBlock,
+  AboutContactsBlock,
+} from "@/shared/interface/IAbout";
 import { RegionLink } from "../region-link";
 
-export const Footer: React.FC = () => {
+interface Props {
+  AboutData: AboutDataItem[];
+}
+
+export const Footer: React.FC<Props> = ({ AboutData }) => {
   return (
     <footer className="footer">
       <div className="footer__content">
@@ -21,19 +28,29 @@ export const Footer: React.FC = () => {
             новости
           </p>
           <Social
-            data={
-              (AboutData.find((item) => item.slug === "Социальные сети")
-                ?.data || []) as SocialItem[]
-            }
+            data={(() => {
+              const maybeSocials = AboutData.find(
+                (item) => item.slug === "Социальные сети",
+              );
+              const isSocials = (item: AboutDataItem | undefined): item is AboutSocialsBlock =>
+                !!(item && (item as AboutSocialsBlock).data && Array.isArray((item as AboutSocialsBlock).data));
+              return isSocials(maybeSocials) ? maybeSocials.data : [];
+            })()}
           />
         </div>
         <div className="footer__content-columnContacts">
           <h2 className="footer__content-columnContacts-title">Контакты</h2>
           <div className="footer__content-contacts">
             {(() => {
-              const contactsData = AboutData.find(
+              const maybeContacts = AboutData.find(
                 (item) => item.slug === "Контакты",
-              )?.data as IContact[] | undefined;
+              );
+              const isContacts = (item: AboutDataItem | undefined): item is AboutContactsBlock =>
+                !!(item && (item as AboutContactsBlock).data && Array.isArray((item as AboutContactsBlock).data));
+
+              const contactsData = isContacts(maybeContacts)
+                ? maybeContacts.data
+                : undefined;
 
               return contactsData?.map((contact) => (
                 <Contact

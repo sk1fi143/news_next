@@ -14,16 +14,28 @@ import { BarMod } from "./bar-mob";
 import { TabsMob } from "./tabs-mob";
 import { Close } from "../../svg/close";
 import { TabsMobileNavigation } from "./tabs-burger";
-import { Logo_H_Desctop } from "../../svg/logo_H_Desctop";
 import { SearchMob } from "./search-mob";
+import { Line } from "../line";
+import {
+  AboutDataItem,
+  SocialItem,
+  AboutSocialsBlock,
+} from "@/shared/interface/IAbout";
+import Link from "next/link";
+import { Vk } from "../../svg/vk";
+import { Max } from "../../svg/max";
+import { Odn } from "../../svg/odn";
+import { Tg } from "../../svg/tg";
 
 interface Props {
   data: CardsProps[];
+  AboutData: AboutDataItem[];
 }
 
-export const Header: React.FC<Props> = ({ data }) => {
+export const Header: React.FC<Props> = ({ data, AboutData }) => {
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
   const [isBurgerOpen, setIsBurgerOpen] = React.useState(false);
+  const [isDesctopBurgerOpen, setIsDesctopBurgerOpen] = React.useState(false);
   React.useEffect(() => {
     if (isBurgerOpen) {
       document.body.style.overflow = "hidden";
@@ -48,15 +60,20 @@ export const Header: React.FC<Props> = ({ data }) => {
         />
         {!isSearchOpen && (
           <>
-            <Tabs />
             <RegionLink href="/" className="header__row-logo">
-              <Logo_H_Desctop className="header__row-logo" />
+              <Logo_Mob className="header__row-logo" />
             </RegionLink>
             <Select topics={data} />
+            <div
+              className="header__desctopBurger"
+              onClick={() => setIsDesctopBurgerOpen(!isDesctopBurgerOpen)}
+            >
+              <Burger />
+            </div>
           </>
         )}
         <div className="header__info-mob">
-         <SearchMob />
+          <SearchMob />
           <div
             className="header__burger-circle"
             onClick={() => setIsBurgerOpen(!isBurgerOpen)}
@@ -66,6 +83,51 @@ export const Header: React.FC<Props> = ({ data }) => {
         </div>
       </div>
       <Bar />
+      <div
+        className={`desctopNav ${isDesctopBurgerOpen ? "open" : ""}`}
+        aria-hidden={!isDesctopBurgerOpen}
+      >
+        <div
+          className="desctopNav__close"
+          onClick={() => setIsDesctopBurgerOpen(false)}
+        >
+          <Cross />
+        </div>
+        <Line />
+        <Tabs />
+        <Line />
+        <p className="desctopNav__text">
+          Подпишитесь на наши социальные сети чтобы не пропустить свежие новости
+        </p>
+        <div className="desctopNav__socials">
+          {(() => {
+            const maybeSocials = AboutData.find(
+              (item) => item.slug === "Социальные сети",
+            );
+
+            const isSocials = (item: AboutDataItem | undefined): item is AboutSocialsBlock =>
+              !!(item && (item as AboutSocialsBlock).data && Array.isArray((item as AboutSocialsBlock).data));
+
+            const socials: SocialItem[] = isSocials(maybeSocials)
+              ? maybeSocials.data
+              : [];
+
+            return socials.map((social) => {
+              const ICONS = { Vk, Tg, Odn, Max };
+              const Icon = ICONS[social.icon as unknown as keyof typeof ICONS];
+            return (
+              <Link
+                href={social.link}
+                className="desctopNav__socials-item"
+                key={social.name}
+              >
+                {Icon ? <Icon fill="#252525" /> : null}
+              </Link>
+            );
+            });
+          })()}
+        </div>
+      </div>
       {isBurgerOpen && (
         <div className="burger-block">
           <div

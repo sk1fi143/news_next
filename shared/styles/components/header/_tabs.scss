@@ -2,22 +2,22 @@
 
 .tabs {
     display: flex;
-    flex-direction: row;
-    column-gap: 36px;
+    flex-direction: column;
 
     &__item {
         cursor: pointer;
+        padding: 16px 20px;
 
         &-text {
             color: $Neutral700;
             font-size: 16px;
             line-height: 20px;
             font-weight: 500;
-            transition: all 0.3s ease-in-out;
+            transition: color 0.3s ease-in-out;
+        }
 
-            &-active, &:hover {
-                color: $Primary700;
-            }
+        &:hover &-text {
+            color: $Primary700;
         }
     }
 }

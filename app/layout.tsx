@@ -9,6 +9,7 @@ import { generateWebSiteSchema, generateOrganizationSchema } from "@/shared/lib/
 import { JsonLd } from "@/shared/components/schema/json-ld";
 import { AboutData } from "@/shared/models/about";
 import { buildPageMetadata, getSiteUrl } from "@/shared/lib/seo";
+import { IContact, IContactInfo } from "@/shared/interface/IAbout";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata("/", {
@@ -30,8 +31,8 @@ export default function RootLayout({
   const siteUrl = getSiteUrl();
   
   // Получаем информацию об организации из AboutData
-  const contactInfo = AboutData.find(item => item.slug === "Контактная информация")?.data as any;
-  const contacts = AboutData.find(item => item.slug === "Контакты")?.data as any[];
+  const contactInfo = AboutData.find(item => item.slug === "Контактная информация")?.data as IContactInfo;
+  const contacts = AboutData.find(item => item.slug === "Контакты")?.data as IContact[];
   
   // Генерируем разметку WebSite
   const webSiteSchema = generateWebSiteSchema({
@@ -64,10 +65,10 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <Suspense fallback={null}>
-          <Header data={NewsData} />
+          <Header data={NewsData} AboutData={AboutData}/>
         </Suspense>
         {children}
-        <Footer />
+        <Footer AboutData={AboutData} />
       </body>
     </html>
   );
