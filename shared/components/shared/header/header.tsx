@@ -94,7 +94,7 @@ export const Header: React.FC<Props> = ({ data, AboutData }) => {
           <Cross />
         </div>
         <Line />
-        <Tabs />
+        <Tabs onItemClick={() => setIsBurgerOpen(false)}/>
         <Line />
         <p className="desctopNav__text">
           Подпишитесь на наши социальные сети чтобы не пропустить свежие новости

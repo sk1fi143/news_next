@@ -6,7 +6,11 @@ import { RegionLink } from "../region-link";
 import { Pages } from "@/shared/models/tabs";
 import { Regions } from "@/shared/models/regions";
 
-export const Tabs: React.FC = () => {
+interface Props {
+  onItemClick?: () => void;
+}
+
+export const Tabs: React.FC<Props> = ({ onItemClick }) => {
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);
   const hasRegion = Regions.some((r) => r.url === segments[0]);
@@ -19,6 +23,7 @@ export const Tabs: React.FC = () => {
         const isActive = cleanPath === href || cleanPath.startsWith(`${href}/`);
         return (
           <RegionLink
+            onClick={onItemClick}
             href={`/${page.link}`}
             key={page.name}
             className="tabs__item"
