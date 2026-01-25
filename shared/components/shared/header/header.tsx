@@ -61,7 +61,7 @@ export const Header: React.FC<Props> = ({ data, AboutData }) => {
         {!isSearchOpen && (
           <>
             <RegionLink href="/" className="header__row-logo">
-              <Logo_Mob className="header__row-logo" />
+              <Logo_Mob />
             </RegionLink>
             <Select topics={data} />
             <div
