@@ -1,7 +1,11 @@
 import React from 'react';
 
-export const Line: React.FC = () => {
+interface Props {
+  className?: string;
+}
+
+export const Line: React.FC<Props> = ({ className }) => {
   return (
-    <div className='line'></div>
+    <div className={className + ' line'}></div>
   );
 };

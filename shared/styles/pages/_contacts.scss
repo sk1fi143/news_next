@@ -1,9 +1,22 @@
 @use "../libs/variables" as *;
 
+.about__contacts-1, .contacts__line-1 {
+    display: none;
+  }
+  .about__contacts-2, .contacts__line-2 {
+    display: flex;
+  }
+
 @media (max-width: 1199px) and (min-width: 768px) {
   .about__row-contacts {
     flex-direction: column;
     margin-top: -16px;
+  }
+  .about__contacts-1, .contacts__line-1 {
+    display: flex;
+  }
+  .about__contacts-2, .contacts__line-2 {
+    display: none;
   }
 }
 
@@ -14,5 +27,11 @@
   }
   .contact-info__title {
     margin-bottom: 24px;
+  }
+  .about__contacts-1, .contacts__line-1 {
+    display: flex;
+  }
+  .about__contacts-2, .contacts__line-2 {
+    display: none;
   }
 }

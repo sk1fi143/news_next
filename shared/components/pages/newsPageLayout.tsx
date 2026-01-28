@@ -19,7 +19,7 @@ export const NewsPageLayout: React.FC<Props> = ({ data, newsData }) => {
   return (
     <main className="newsMain">
       <Head breadcrumbs title={data.title} breadcrumbsSlug={data.title} />
-      <div className="news__content">
+       <div className="page__sticky">
         <div className="news__left-content">
           <div className="news__tags">
             {data.tags.map((tag, index) => (
@@ -105,7 +105,7 @@ export const NewsPageLayout: React.FC<Props> = ({ data, newsData }) => {
         />
         </div>
 
-        <div className="news__right-content">
+        <div className="news__right-content stickyFeed">
           <NewsFeed title="Новости" link="news" data={newsData}  firstCard="newsCard-S"/>
         </div>
       </div>

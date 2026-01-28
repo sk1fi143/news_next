@@ -40,25 +40,38 @@ export const ContactsLayout: React.FC<Props> = ({ aboutData }) => {
   );
 
   return (
- <main>
-    <Head breadcrumbs title="Контакты" />
+    <main>
+      <Head breadcrumbs title="Контакты" />
       <div className="about__row about__row-contacts">
         {contactInfo && (
-                  <ContactInfo {...contactInfo.data} soc={socials?.data ?? []} />
+          <ContactInfo {...contactInfo.data} soc={socials?.data ?? []} />
         )}
+        <Line className="contacts__line-1" />
+        <div className="about__contacts about__contacts-1">
+          {contacts?.data.map((contact) => (
+            <Contact
+              key={contact.title}
+              title={contact.title}
+              contact={contact.contact}
+              mail={contact.mail}
+              className="about__contacts-item"
+            />
+          ))}
+        </div>
+        <Line className="contacts__line-1" />
         <Form />
       </div>
-      <Line />
-      <div className="about__contacts">
+      <Line className="contacts__line-2" />
+      <div className="about__contacts about__contacts-2">
         {contacts?.data.map((contact) => (
-                  <Contact
-                    key={contact.title}
-                    title={contact.title}
-                    contact={contact.contact}
-                    mail={contact.mail}
-                    className="about__contacts-item"
-                  />
-                ))}
+          <Contact
+            key={contact.title}
+            title={contact.title}
+            contact={contact.contact}
+            mail={contact.mail}
+            className="about__contacts-item"
+          />
+        ))}
       </div>
     </main>
   );

@@ -354,6 +354,9 @@
     .news-feed {
       display: none;
     }
+     .news__right-content {
+      display: none;
+     }
   .line {
     margin: 32px 0;
   }
@@ -366,7 +369,7 @@
   }
   .news-info {
     order: -2;
-    margin-top: 24px;
+    margin-top: 0px;
   }
   .news-image img {
     height: 200px;
@@ -394,9 +397,7 @@
     color: $Primary700;
     left: 0;
   }
-  .news-info {
-    margin-top: 24px;
-  }
+
   .news-section h2 {
     font-size: 36px;
     line-height: 40px;
